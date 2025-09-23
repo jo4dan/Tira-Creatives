@@ -1,759 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tira Creatives - Dive Deep into Digital Success</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            overflow-x: hidden;
-        }
-        
-        /* Ocean Animation Background */
-        .ocean-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ocean-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><path d="M0,100 Q250,50 500,100 T1000,100 L1000,200 L0,200 Z" fill="rgba(255,255,255,0.1)"/></svg>') repeat-x;
-            animation: wave 15s ease-in-out infinite;
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(-25px) translateY(-10px); }
-        }
-        
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .nav-links a:hover {
-            color: #3498db;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-        
-        .cta-button {
-            background: linear-gradient(45deg, #e74c3c, #f39c12);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s both;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-hidden {
-            display: none;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .service-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .portfolio-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .portfolio-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-        
-        .results {
-            background: #e8f6f3;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-        
-        .results h4 {
-            color: #27ae60;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Team Grid */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .team-member {
-            text-align: center;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-        
-        .member-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-        
-        .testimonial {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .testimonial blockquote {
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial cite {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        
-        /* Blog Grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .blog-post {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-post:hover {
-            transform: translateY(-5px);
-        }
-        
-        .blog-image {
-            height: 200px;
-            background: linear-gradient(45deg, #e74c3c, #f39c12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .blog-content {
-            padding: 1.5rem;
-        }
-        
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 3rem auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-        
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #3498db;
-        }
-        
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            section {
-                padding: 3rem 1rem;
-            }
-        }
-        
-        /* Floating Elements */
-        .floating-element {
-            position: fixed;
-            z-index: -1;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-element:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .floating-element:nth-child(2) {
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-        
-        .floating-element:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tira Creatives — Ocean Themed Social Media & Content Marketing Agency</title>
+  <meta name="description" content="Tira Creatives — Social Media & Content Marketing Agency. Dive into our ocean of ideas." />
+  <style>
+    /* ==========================
+       Tira Creatives - Single File
+       HTML + CSS + JS
+       Producer: ChatGPT (made for jordan)
+       ========================== */
+
+    :root{
+      --shore:#bfe9ff;
+      --surface:#6fc3ff;
+      --reef:#1f8fb6;
+      --deep:#022b3a;
+      --accent:#ffd166;
+      --glass: rgba(255,255,255,0.08);
+      --glass-strong: rgba(255,255,255,0.12);
+      --max-width:1200px;
+      --ease: cubic-bezier(.2,.9,.22,1);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,var(--surface) 0%, #0b3b53 60%, var(--deep) 100%);
+      color: #e6f3fb;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    /* CONTAINER */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:40px 20px}
+
+    /* NAV / LAYOUT */
+    header{
+      position:sticky;top:14px;z-index:40;pointer-events:auto
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;padding:8px 14px;border-radius:12px
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff8a65);display:grid;place-items:center;font-weight:700;color:#023047;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg)}
+    .brand h1{font-size:18px;margin:0}
+    .nav a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:999px;backdrop-filter: blur(6px);background:var(--glass-strong);font-weight:600}
+
+    /* HERO */
+    .hero{min-height:78vh;display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;padding:40px 0}
+    .hero .left{padding:20px}
+    .kicker{display:inline-block;background:rgba(255,255,255,.06);padding:6px 10px;border-radius:999px;margin-bottom:18px}
+    h2{font-size:36px;line-height:1.02;margin:0 0 18px}
+    p.lead{opacity:.95;margin:0 0 20px;color:rgba(230,243,251,.95)}
+    .cta-row{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:12px;cursor:pointer;border:0;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,#ffd166,#ff8a65);color:#04293a}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.06)}
+
+    /* HERO RIGHT - glass card with mock phone / portfolio */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:18px;padding:18px;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,43,58,.35);position:relative;overflow:hidden}
+    .device{width:100%;height:340px;border-radius:12px;background:linear-gradient(180deg,#0b5d76,#063a4a);display:flex;flex-direction:column;padding:14px}
+    .device .screen{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#083b50,#05292f);display:grid;place-items:center;color:rgba(255,255,255,.95)}
+    .client-logos{display:flex;gap:8px;padding-top:10px;align-items:center}
+    .client-logos img{width:34px;height:34px;border-radius:6px;object-fit:cover}
+
+    /* FLOATING MARINE ELEMENTS */
+    .sea-layer{position:fixed;inset:0;pointer-events:none;z-index:0}
+    .bubbles{position:absolute;left:4%;top:10%;width:92%;height:90%;overflow:hidden}
+    .bubble{position:absolute;border-radius:999px;background:rgba(255,255,255,0.06);box-shadow:0 6px 26px rgba(3,19,24,.12);backdrop-filter: blur(2px)}
+
+    /* PARALLAX ZONES */
+    section{padding:80px 0;position:relative;z-index:1}
+    .zone{padding:40px 20px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));box-shadow:0 6px 24px rgba(0,0,0,.16)}
+
+    /* SERVICES GRID */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .service{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:160px}
+    .service h3{margin:6px 0}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700}
+
+    /* PORTFOLIO - coral reef */
+    .reef{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .reef-card{position:relative;border-radius:12px;overflow:hidden;min-height:220px}
+    .reef-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .6s var(--ease)}
+    .reef-card:hover img{transform:scale(1.06)}
+    .reef-card .meta{position:absolute;left:12px;bottom:12px;padding:10px 12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));backdrop-filter: blur(4px)}
+
+    /* ABOUT - team */
+    .team{display:flex;gap:10px;flex-wrap:wrap}
+    .member{background:var(--glass);padding:12px;border-radius:12px;min-width:180px}
+    .avatar{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#9be7ff,#5ec5ff);display:inline-block;vertical-align:middle}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);color:inherit}
+    .msg-bottle{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+    /* FOOTER */
+    footer{padding:40px 0;color:rgba(230,243,251,.7)}
+
+    /* MICRO-INTERACTIONS */
+    .reveal{opacity:0;transform:translateY(24px);transition:all .8s var(--ease)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;min-height:80vh}
+      .contact-grid{grid-template-columns:1fr}
+      .device{height:260px}
+      .wrap{padding:24px}
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion:reduce){
+      *{transition:none!important;animation:none!important}
+    }
+
+    /* Lighthouse/Beacon nav transform */\    
+    .beacon{position:fixed;right:28px;bottom:28px;z-index:60;pointer-events:auto}
+    .beacon button{width:64px;height:64px;border-radius:50%;border:0;background:linear-gradient(180deg,#ffd166,#ff8a65);display:grid;place-items:center;font-weight:900;box-shadow:0 12px 30px rgba(2,16,25,.4)}
+
+  </style>
 </head>
 <body>
-    <!-- Floating Ocean Elements -->
-    <div class="floating-element">🐋</div>
-    <div class="floating-element">🌊</div>
-    <div class="floating-element">🐙</div>
-    
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Tira Creatives</div>
-            <ul class="nav-links">
-                <li><a onclick="showSection('home')">Home</a></li>
-                <li><a onclick="showSection('services')">Services</a></li>
-                <li><a onclick="showSection('portfolio')">Portfolio</a></li>
-                <li><a onclick="showSection('about')">About</a></li>
-                <li><a onclick="showSection('blog')">Blog</a></li>
-                <li><a onclick="showSection('contact')">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Home Section -->
-    <section id="home" class="hero ocean-bg">
-        <div class="hero-content">
-            <h1>Dive Deep into Digital Success</h1>
-            <p>We're Tira Creatives - where ocean-deep strategy meets wave-making creativity to elevate your brand's digital presence</p>
-            <a href="#" class="cta-button" onclick="showSection('contact')">Start Your Journey</a>
+  <!-- SEA LAYERS: bubbles + floating items -->
+  <div class="sea-layer" aria-hidden="true">
+    <canvas id="ripple-canvas" style="position:absolute;inset:0;z-index:5;pointer-events:none"></canvas>
+    <div class="bubbles" id="bubbles"></div>
+  </div>
+
+  <header class="wrap">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo">TC</div>
+        <div>
+          <h1>Tira Creatives</h1>
+          <div style="font-size:12px;opacity:.85">Social Media & Content Marketing — ocean inspired</div>
         </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="pill">Let's dive</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero reveal" id="home">
+      <div class="left">
+        <div class="kicker">We make waves — socials that actually convert</div>
+        <h2>Turn your brand into an oceanic force. Content, strategy, growth.</h2>
+        <p class="lead">Tira Creatives — we craft scroll-stopping content and data-led campaigns that move attention into action. Think viral reels, clean paid funnels, and influencer collabs that actually sell.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="cta-audit">Free audit</button>
+          <button class="btn btn-ghost" id="cta-portfolio">View Reef (Portfolio)</button>
+        </div>
+        <div style="margin-top:18px;font-size:13px;opacity:.9">
+          <strong>Pro tip:</strong> Start with a 30-day pilot — small risk, real results.
+        </div>
+      </div>
+
+      <div class="card" aria-hidden="false">
+        <div class="device" role="region" aria-label="portfolio device mock">
+          <div class="screen" id="screen">
+            <div style="text-align:center">
+              <div style="font-weight:800;font-size:20px;margin-bottom:6px">Case Study — Shoreline Skincare</div>
+              <div style="opacity:.9">+78% engagement in 60 days • +22% sales from IG</div>
+            </div>
+          </div>
+          <div class="client-logos" aria-hidden="true">
+            <img src="" alt="client A" />
+            <img src="" alt="client B" />
+            <img src="" alt="client C" />
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section-hidden">
-        <h2 class="section-title">Our Services</h2>
-        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Navigate the digital ocean with our comprehensive suite of services</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="service-icon">📱</span>
-                <h3>Social Media Management</h3>
-                <p>Complete social media strategy, content creation, and community management across all major platforms. We handle everything from daily posting to engagement strategies that build lasting relationships with your audience.</p>
-                <ul style="margin-top: 1rem;">
-                    <li>Daily content creation & posting</li>
-                    <li>Community engagement & management</li>
-                    <li>Platform-specific optimization</li>
-                    <li>Monthly analytics & reporting</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">🎨</span>
-                <h3>Content Creation</h3>
-                <p>From eye-catching visuals to compelling copy, we create content that stops the scroll and drives action. Our creative team specializes in brand-aligned content that resonates with your target audience.</p>
-                <ul style="margin-top: 1rem;">
-                    <li>Custom graphic design & illustrations</li>
-                    <li>Video production & editing</li>
-                    <li>Copywriting & storytelling</li>
-                    <li>Brand photography direction</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">🎯</span>
-                <h3>Paid Advertising</h3>
-                <p>Strategic ad campaigns that maximize ROI across Facebook, Instagram, Google, and LinkedIn. We combine creative excellence with data-driven optimization to deliver measurable results.</p>
-                <ul style="margin-top: 1rem;">
-                    <li>Campaign strategy & setup</li>
-                    <li>Creative ad design & copy</li>
-                    <li>Audience targeting & optimization</li>
-                    <li>Performance tracking & scaling</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">⭐</span>
-                <h3>Influencer Marketing</h3>
-                <p>Connect with the right influencers to amplify your brand message. We handle everything from influencer identification and outreach to campaign management and performance tracking.</p>
-                <ul style="margin-top: 1rem;">
-                    <li>Influencer identification & vetting</li>
-                    <li>Campaign strategy & negotiation</li>
-                    <li>Content collaboration oversight</li>
-                    <li>ROI measurement & reporting</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">🧭</span>
-                <h3>Strategy Development</h3>
-                <p>Comprehensive digital marketing strategies tailored to your business goals. We analyze your market, competitors, and audience to create data-driven roadmaps for success.</p>
-                <ul style="margin-top: 1rem;">
-                    <li>Market & competitor analysis</li>
-                    <li>Audience research & personas</li>
-                    <li>Content calendar development</li>
-                    <li>KPI setting & tracking</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <span class="service-icon">📊</span>
-                <h3>Analytics & Reporting</h3>
-                <p>In-depth analytics and actionable insights to continuously optimize your digital presence. We provide clear, comprehensive reports that show exactly how your investment is performing.</p>
-                <ul style="margin-top: 1rem;">
-                    <li>Custom dashboard creation</li>
-                    <li>Monthly performance reports</li>
-                    <li>Competitive benchmarking</li>
-                    <li>Growth recommendations</li>
-                </ul>
-            </div>
-        </div>
+    <!-- Services -->
+    <section id="services" class="reveal zone">
+      <h2>Services</h2>
+      <p class="lead">We cover the full tidal range of modern marketing — from surface-level reach to deep conversion strategies.</p>
+      <div class="services">
+        <article class="service">
+          <div class="pill">Social Media Management</div>
+          <h3>Daily content, community & growth</h3>
+          <p>Strategy, content calendar, posting, and community response. We report weekly and pivot fast.</p>
+        </article>
+        <article class="service">
+          <div class="pill">Content Creation</div>
+          <h3>Video-first creative</h3>
+          <p>Short-form video, static assets, repurposing & editing. Motion design that hooks in 3s.</p>
+        </article>
+        <article class="service">
+          <div class="pill">Paid Ads</div>
+          <h3>Data-driven funnels</h3>
+          <p>Meta & Reels ads, targeting + creative testing, ROAS optimization and scaling playbooks.</p>
+        </article>
+        <article class="service">
+          <div class="pill">Influencer Collabs</div>
+          <h3>Micro + Macro creator campaigns</h3>
+          <p>Strategy, scripts, KRs and contract management — creators who actually match your brand.</p>
+        </article>
+        <article class="service">
+          <div class="pill">Strategy & Audits</div>
+          <h3>Growth audits and roadmaps</h3>
+          <p>Channel-audits, content gap analysis, and a 90-day activation plan with metrics.</p>
+        </article>
+        <article class="service">
+          <div class="pill">Creative Ops</div>
+          <h3>Playbooks & Templates</h3>
+          <p>Content templates, brand kits, and campaign SOPs so you can scale without chaos.</p>
+        </article>
+      </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section-hidden">
-        <h2 class="section-title">Portfolio & Case Studies</h2>
-        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Dive into our success stories and see how we've helped brands make waves</p>
-        
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="portfolio-image">Ocean View Resort</div>
-                <div class="portfolio-content">
-                    <h3>Ocean View Resort - Social Media Transformation</h3>
-                    <p><strong>Challenge:</strong> Luxury resort struggling with low online engagement and bookings through social media.</p>
-                    <p><strong>Solution:</strong> Complete social media overhaul with stunning visual content, influencer partnerships, and targeted ad campaigns.</p>
-                    <div class="results">
-                        <h4>Results Achieved:</h4>
-                        <ul>
-                            <li>340% increase in Instagram followers</li>
-                            <li>180% boost in direct bookings from social</li>
-                            <li>95% improvement in engagement rate</li>
-                            <li>$2.3M in attributed revenue over 12 months</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-item">
-                <div class="portfolio-image">AquaTech Startup</div>
-                <div class="portfolio-content">
-                    <h3>AquaTech Startup - Launch Campaign</h3>
-                    <p><strong>Challenge:</strong> New sustainable water technology company needed to establish brand awareness and generate leads.</p>
-                    <p><strong>Solution:</strong> Multi-platform content strategy focusing on education, sustainability messaging, and thought leadership.</p>
-                    <div class="results">
-                        <h4>Results Achieved:</h4>
-                        <ul>
-                            <li>Built 50K+ followers across platforms in 6 months</li>
-                            <li>Generated 1,200+ qualified leads</li>
-                            <li>Secured $5M in Series A funding</li>
-                            <li>Established CEO as industry thought leader</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-item">
-                <div class="portfolio-image">Blue Wave E-commerce</div>
-                <div class="portfolio-content">
-                    <h3>Blue Wave E-commerce - Sales Optimization</h3>
-                    <p><strong>Challenge:</strong> Online retailer experiencing declining sales and poor social media ROI.</p>
-                    <p><strong>Solution:</strong> Data-driven ad optimization, user-generated content campaigns, and influencer collaborations.</p>
-                    <div class="results">
-                        <h4>Results Achieved:</h4>
-                        <ul>
-                            <li>280% increase in social commerce sales</li>
-                            <li>65% reduction in customer acquisition cost</li>
-                            <li>450% growth in user-generated content</li>
-                            <li>4.8x return on ad spend (ROAS)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <!-- Portfolio -->
+    <section id="portfolio" class="reveal zone">
+      <h2>Portfolio — the Coral Reef</h2>
+      <p class="lead">A peek at campaigns that swam upstream and won.</p>
+      <div class="reef" id="reef">
+        <div class="reef-card" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="campaign 1">
+          <div class="meta">
+            <strong>Shoreline Skincare</strong><div style="font-size:12px">UGC + Reels • +78% engagement</div>
+          </div>
         </div>
+        <div class="reef-card" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="campaign 2">
+          <div class="meta"><strong>Cove Coffee</strong><div style="font-size:12px">Launch + influencer • +320% web traffic</div></div>
+        </div>
+        <div class="reef-card" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop&crop=entropy" alt="campaign 3">
+          <div class="meta"><strong>Anchor Apparel</strong><div style="font-size:12px">Paid ads + creative • 3x ROAS</div></div>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section-hidden">
-        <h2 class="section-title">About Tira Creatives</h2>
-        
-        <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
-            <p style="font-size: 1.3rem; margin-bottom: 2rem;">Born from the depths of digital innovation, Tira Creatives is where creativity meets strategy in the vast ocean of social media marketing.</p>
-            <p style="font-size: 1.1rem; line-height: 1.8;">We believe every brand has a unique story waiting to surface. Like skilled navigators, we guide businesses through the ever-changing currents of digital marketing, helping them discover new territories of growth and connection. Our approach is both art and science - combining creative excellence with data-driven insights to create campaigns that don't just float, but make waves.</p>
+    <!-- ABOUT -->
+    <section id="about" class="reveal zone">
+      <h2>About — Our Crew</h2>
+      <p class="lead">We’re a small team of creators, strategists, and nerds who love oceans and metrics.</p>
+      <div class="team">
+        <div class="member">
+          <div style="display:flex;gap:10px;align-items:center"><div class="avatar"></div><div><strong>Kai</strong><div style="font-size:12px;opacity:.85">Founder • Creative Director</div></div></div>
+          <p style="margin-top:10px;font-size:13px">Background in film & UX. Loves color grading and strong CTAs.</p>
         </div>
-        
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: 20px; color: white; text-align: center; margin: 3rem 0;">
-            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Our Mission</h3>
-            <p style="font-size: 1.2rem;">To help businesses navigate the digital ocean with confidence, creating authentic connections that drive meaningful growth and lasting success.</p>
+        <div class="member">
+          <div style="display:flex;gap:10px;align-items:center"><div class="avatar"></div><div><strong>Asha</strong><div style="font-size:12px;opacity:.85">Growth & Ads</div></div></div>
+          <p style="margin-top:10px;font-size:13px">Data-first ad strategist. Will make your CPA cry (in a good way).</p>
         </div>
-        
-        <h3 style="font-size: 2rem; text-align: center; margin: 3rem 0 2rem; color: #2c3e50;">Meet Our Crew</h3>
-        
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="member-photo">SM</div>
-                <h3>Sarah Martinez</h3>
-                <h4 style="color: #3498db; margin-bottom: 1rem;">Founder & Creative Director</h4>
-                <p>With 8+ years in digital marketing, Sarah leads our creative vision and ensures every campaign reflects our ocean-deep commitment to excellence. Former senior strategist at top agencies.</p>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-photo">JC</div>
-                <h3>Jake Chen</h3>
-                <h4 style="color: #3498db; margin-bottom: 1rem;">Strategy & Analytics Lead</h4>
-                <p>Data scientist turned marketing strategist, Jake brings analytical precision to our creative processes. Specializes in performance optimization and predictive modeling.</p>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-photo">AR</div>
-                <h3>Aria Rodriguez</h3>
-                <h4 style="color: #3498db; margin-bottom: 1rem;">Content & Community Manager</h4>
-                <p>Award-winning content creator with expertise in visual storytelling and community building. Aria ensures every piece of content creates meaningful connections.</p>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-photo">MK</div>
-                <h3>Marcus Kim</h3>
-                <h4 style="color: #3498db; margin-bottom: 1rem;">Paid Media Specialist</h4>
-                <p>Performance marketing expert with a track record of scaling campaigns from startup to enterprise level. Certified across all major advertising platforms.</p>
-            </div>
-        </div>
-        
-        <div class="testimonials">
-            <div class="testimonial">
-                <blockquote>"Working with Tira Creatives has been transformative for our business. They don't just manage our social media - they've become true partners in our growth story."</blockquote>
-                <cite>- Jennifer Walsh, CEO of Coastal Dynamics</cite>
-            </div>
-        </div>
+        <div class="member">
+          <div class="member"><div style="display:flex;gap:10px;align-items:center"><div class="avatar"></div><div><strong>Ravi</strong><div style="font-size:12px;opacity:.85">Head of Content</div></div></div>
+          <p style="margin-top:10px;font-size:13px">Writes scripts, shoots UGC and edits at 2x speed when caffeine's present.</p></div>
+      </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="section-hidden">
-        <h2 class="section-title">Insights & Resources</h2>
-        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Stay current with the latest waves in digital marketing</p>
-        
-        <div class="blog-grid">
-            <article class="blog-post">
-                <div class="blog-image">Platform Updates</div>
-                <div class="blog-content">
-                    <h3>Instagram's Latest Algorithm Changes: What Brands Need to Know</h3>
-                    <p style="color: #666; margin-bottom: 1rem;">December 15, 2024</p>
-                    <p>Instagram's recent algorithm updates are reshaping how content is discovered. We break down the key changes and provide actionable strategies for maintaining visibility and engagement in the new landscape.</p>
-                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="blog-image">Strategy Guide</div>
-                <div class="blog-content">
-                    <h3>The Complete Guide to Social Commerce in 2024</h3>
-                    <p style="color: #666; margin-bottom: 1rem;">December 10, 2024</p>
-                    <p>Social commerce is revolutionizing how brands sell online. Discover the platforms, strategies, and best practices that are driving billions in social commerce revenue.</p>
-                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="blog-image">Industry Trends</div>
-                <div class="blog-content">
-                    <h3>5 Content Marketing Trends That Will Dominate 2025</h3>
-                    <p style="color: #666; margin-bottom: 1rem;">December 5, 2024</p>
-                    <p>From AI-powered personalization to interactive content formats, we explore the trends that forward-thinking brands are already implementing to stay ahead of the curve.</p>
-                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="blog-image">Case Study</div>
-                <div class="blog-content">
-                    <h3>How We Helped a B2B SaaS Company Triple Their LinkedIn Leads</h3>
-                    <p style="color: #666; margin-bottom: 1rem;">November 28, 2024</p>
-                    <p>A deep dive into our LinkedIn strategy that transformed a struggling B2B company into a lead generation powerhouse. Includes specific tactics and measurable results.</p>
-                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="blog-image">Tips & Tools</div>
-                <div class="blog-content">
-                    <h3>10 Free Tools Every Social Media Manager Should Know</h3>
-                    <p style="color: #666; margin-bottom: 1rem;">November 22, 2024</p>
-                    <p>Discover the hidden gems and free resources that can streamline your social media workflow, improve your content quality, and boost your team's productivity.</p>
-                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
-                </div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="blog-image">Thought Leadership</div>
-                <div class="blog-content">
-                    <h3>The Future of Influencer Marketing: Micro vs. Macro Influencers</h3>
-                    <p style="color: #666; margin-bottom: 1rem;">November 18, 2024</p>
-                    <p>An in-depth analysis of influencer marketing trends, ROI comparisons, and strategic recommendations for brands looking to maximize their influencer partnerships.</p>
-                    <a href="#"
+    <!-- RESOURCES / BLOG -->
+    <section id="blog" class="reveal zone">
+      <h2>Ship's Log (Blog)</h2>
+      <p class="lead">Short, tactical reads — not fluff. Latest: "Reels that Hook in 3s"</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <article class="zone" style="padding:16px">
+          <h3>Reels that Hook in 3s</h3>
+          <p style="margin:6px 0;font-size:13px">A straightforward, checklist-friendly guide to stop viewers mid-scroll.</p>
+        </article>
+        <article class="zone" style="padding:16px">
+          <h3>Micro-influencer playbook</h3>
+          <p style="margin:6px 0;font-size:13px">How to run 10 creator experiments without wasting budget.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal zone">
+      <h2>Contact — Message in a Bottle</h2>
+      <p class="lead">Slide us a message. We reply in 48 hours (usually faster).</p>
+      <div class="contact-grid">
+        <form id="contactForm" aria-label="Contact form">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="text" name="company" placeholder="Company" />
+          <textarea name="message" rows="5" placeholder="Tell us about your challenge"></textarea>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button class="btn btn-primary" type="submit">Send message</button>
+            <button class="btn btn-ghost" type="button" id="demo-btn">Request free audit</button>
+          </div>
+        </form>
+        <aside>
+          <div class="msg-bottle">
+            <div style="font-weight:800">Quick audit</div>
+            <div style="font-size:13px;opacity:.9">We’ll review your socials and drop 3 low-effort wins.</div>
+          </div>
+          <div style="margin-top:12px;font-size:13px">Phone: +91 90000 00000<br/>Email: hello@tiracreatives.example</div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div>© Tira Creatives — Made with saltwater & pixels</div>
+        <div style="opacity:.85">Privacy • Terms</div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="beacon" title="Ambient toggle">
+    <button id="soundToggle">🔊</button>
+  </div>
+
+  <audio id="ambience" loop src="" aria-hidden="true"></audio>
+
+  <script>
+    /* =====================
+       JS - Interactivity + Effects
+       =====================*/
+    (function(){
+      // Simple helpers
+      const qs = s=>document.querySelector(s);
+      const qsa = s=>document.querySelectorAll(s);
+
+      // Reveal on scroll
+      const reveals = qsa('.reveal');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('show');
+        });
+      },{threshold:0.12});
+      reveals.forEach(r=>io.observe(r));
+
+      // Bubbles generator
+      const bubblesWrap = qs('#bubbles');
+      function makeBubble(){
+        const b = document.createElement('div');
+        b.className='bubble';
+        const size = 8 + Math.random()*44;
+        b.style.width = size+'px';
+        b.style.height = size+'px';
+        b.style.left = (Math.random()*100)+'%';
+        b.style.top = (20 + Math.random()*70)+'%';
+        b.style.opacity = (0.05 + Math.random()*0.3);
+        bubblesWrap.appendChild(b);
+        // float animation
+        const dur = 12 + Math.random()*18;
+        b.animate([
+          {transform:'translateY(0) scale(1)'},
+          {transform:'translateY(-200px) scale(.8)'}
+        ],{duration:dur*1000,iterations:Infinity,easing:'linear'});
+        // cleanup when offscreen
+        setTimeout(()=>{ if(b.parentNode) b.remove() }, (dur*1000)+2000);
+      }
+      if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+        setInterval(makeBubble,600);
+      }
+
+      // Ripple canvas for click/mouse
+      const canvas = qs('#ripple-canvas');
+      const ctx = canvas.getContext('2d');
+      let W=canvas.width=innerWidth; let H=canvas.height=innerHeight;
+      window.addEventListener('resize',()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight});
+      const ripples=[];
+      function draw(){
+        ctx.clearRect(0,0,W,H);
+        for(let i=ripples.length-1;i>=0;i--){
+          const r = ripples[i];
+          ctx.beginPath();
+          ctx.arc(r.x,r.y,r.rad,0,Math.PI*2);
+          ctx.strokeStyle = `rgba(255,255,255,${r.alpha})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          r.rad+=r.speed; r.alpha-=0.008;
+          if(r.alpha<=0) ripples.splice(i,1);
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+      ['click','mousemove'].forEach(evt=>{
+        window.addEventListener(evt,(e)=>{
+          if(evt==='mousemove' && Math.random()>0.04) return; // reduce perf cost
+          ripples.push({x:e.clientX,y:e.clientY,rad:8,alpha:0.45,speed:2+Math.random()*3});
+        });
+      });
+
+      // CTA buttons
+      qs('#cta-audit').addEventListener('click',()=>{
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        qs('input[name="name"]').focus();
+      });
+      qs('#cta-portfolio').addEventListener('click',()=>{qs('#portfolio').scrollIntoView({behavior:'smooth'})});
+
+      // Reef hover audio demo (tiny microinteraction)
+      qsa('.reef-card').forEach(card=>{
+        card.addEventListener('mouseenter',()=>{card.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:350,fill:'forwards'})});
+        card.addEventListener('mouseleave',()=>{card.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:350,fill:'forwards'})});
+      });
+
+      // Contact form fake submit
+      qs('#contactForm').addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const name = e.target.name.value || 'friend';
+        alert('Message received, '+name+' — we\'ll send a free audit within 48 hours.');
+        e.target.reset();
+      });
+
+      // Demo button
+      qs('#demo-btn').addEventListener('click',()=>{
+        alert('Request noted. We\'ll ping you with 3 quick wins.');
+      });
+
+      // Ambient sound toggle (user must provide file if used locally)
+      const amb = qs('#ambience');
+      const soundBtn = qs('#soundToggle');
+      let playing=false;
+      soundBtn.addEventListener('click',()=>{
+        if(!amb.src){
+          // lightweight synthesized ambience fallback
+          alert('No local ambience file included. To enable ambient sound, set the <audio id="ambience"> src attribute to an .mp3 file.');
+          return;
+        }
+        if(playing){amb.pause(); soundBtn.textContent='🔇'; playing=false}
+        else{amb.play(); soundBtn.textContent='🔊'; playing=true}
+      });
+
+      // Mouse tracking underwater current effect
+      let mouseX=0, mouseY=0; document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+      // small floating transform for the device screen
+      (function loop(){
+        const s = qs('#screen');
+        const nx = (mouseX - window.innerWidth/2) / window.innerWidth * 8;
+        const ny = (mouseY - window.innerHeight/2) / window.innerHeight * 6;
+        if(s) s.style.transform = `translate(${nx}px, ${ny}px)`;
+        requestAnimationFrame(loop);
+      })();
+
+      // Lighthouse beacon (scroll to top)
+      qs('.beacon button').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
+
+      // Accessibility: respect reduced-motion
+      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+        document.documentElement.style.setProperty('--ease','linear');
+      }
+
+      // Tiny SEO-friendly dynamic title change based on scroll depth
+      window.addEventListener('scroll',()=>{
+        const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+        if(p<0.15) document.title = 'Tira Creatives — We make waves';
+        else if(p<0.5) document.title = 'Tira Creatives — Our Work (Reef)';
+        else document.title = 'Tira Creatives — Dive Deeper';
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
