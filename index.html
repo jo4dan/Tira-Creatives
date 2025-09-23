@@ -6,10 +6,11 @@
   <title>Tira Creatives — Ocean Themed Social Media & Content Marketing Agency</title>
   <meta name="description" content="Tira Creatives — Social Media & Content Marketing Agency. Dive into our ocean of ideas." />
   <meta name="theme-color" content="#063a4a" />
+  <!-- FONT: Poppins for friendly-modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* ==========================
-       Tira Creatives - Responsive + Fixed Layout
-       Single file: HTML + CSS + JS
+       Tira Creatives - Color & Font fixes
        ========================== */
 
     :root{
@@ -18,8 +19,12 @@
       --reef:#1f8fb6;
       --deep:#022b3a;
       --accent:#ffd166;
-      --glass: rgba(255,255,255,0.08);
-      --glass-strong: rgba(255,255,255,0.12);
+      --accent-2:#ff8a65;
+      --text: #eaf6ff;            /* primary readable text */
+      --muted: rgba(234,246,255,0.82); /* slightly less intense */
+      --muted-2: rgba(234,246,255,0.65);
+      --glass: rgba(255,255,255,0.06);
+      --glass-strong: rgba(255,255,255,0.10);
       --max-width:1200px;
       --ease: cubic-bezier(.2,.9,.22,1);
       --gap:18px;
@@ -29,12 +34,12 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      font-family:'Poppins', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: linear-gradient(180deg,var(--surface) 0%, #0b3b53 60%, var(--deep) 100%);
-      color: #e6f3fb;
+      color:var(--text);
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
-      line-height:1.4;
+      line-height:1.45;
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -45,74 +50,85 @@
     header{position:sticky;top:12px;z-index:70}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border-radius:12px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff8a65);display:grid;place-items:center;font-weight:800;color:#023047;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg)}
-    .brand h1{font-size:18px;margin:0}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:#05323b;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg);font-family:'Poppins',sans-serif}
+    .brand h1{font-size:18px;margin:0;color:var(--text);letter-spacing:0.2px}
+
     /* desktop links */
     .nav-links{display:flex;gap:8px;align-items:center}
-    .nav-links a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:999px;background:var(--glass-strong);font-weight:600}
+    .nav-links a{
+      color:var(--text);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--glass);
+      font-weight:600;
+      transition:all .22s var(--ease);
+    }
+    .nav-links a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.12)}
+
+    /* pill variant */
+    .pill{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04293a;padding:8px 12px;border-radius:999px;font-weight:700}
 
     /* mobile hamburger */
-    .hamburger{display:none;background:transparent;border:0;color:inherit;font-size:22px}
+    .hamburger{display:none;background:transparent;border:0;color:var(--text);font-size:22px}
     .mobile-menu{display:none;position:fixed;right:12px;top:72px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter:blur(6px);padding:12px;border-radius:12px;box-shadow:0 12px 30px rgba(2,43,58,.35)}
-    .mobile-menu a{display:block;padding:8px 10px;border-radius:8px;margin-bottom:6px}
+    .mobile-menu a{display:block;padding:8px 10px;border-radius:8px;margin-bottom:6px;color:var(--text)}
 
     /* HERO */
     .hero{min-height:70vh;display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;padding:30px 0}
     .hero .left{padding:8px}
-    .kicker{display:inline-block;background:rgba(255,255,255,.06);padding:6px 10px;border-radius:999px;margin-bottom:14px;font-size:13px}
-    h2{font-size:36px;line-height:1.04;margin:0 0 14px}
-    p.lead{opacity:.95;margin:0 0 18px;color:rgba(230,243,251,.95)}
+    .kicker{display:inline-block;background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;margin-bottom:14px;font-size:13px;color:var(--muted)}
+    h2{font-size:36px;line-height:1.04;margin:0 0 14px;color:var(--text);font-weight:700}
+    p.lead{opacity:1;margin:0 0 18px;color:var(--muted)}
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .btn{padding:10px 14px;border-radius:12px;cursor:pointer;border:0;font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,#ffd166,#ff8a65);color:#04293a}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.06)}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04293a}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
     /* CARD / DEVICE */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:18px;padding:14px;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,43,58,.35);position:relative;overflow:hidden}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:18px;padding:14px;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,43,58,.35);position:relative;overflow:hidden}
     .device{width:100%;height:340px;border-radius:12px;background:linear-gradient(180deg,#0b5d76,#063a4a);display:flex;flex-direction:column;padding:14px}
-    .device .screen{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#083b50,#05292f);display:grid;place-items:center;color:rgba(255,255,255,.95);transform-origin:center}
+    .device .screen{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#083b50,#05292f);display:grid;place-items:center;color:var(--text);transform-origin:center}
     .client-logos{display:flex;gap:8px;padding-top:10px;align-items:center}
     .client-logos img{width:34px;height:34px;border-radius:6px;object-fit:cover}
 
-    /* FLOATING MARINE ELEMENTS */
-    .sea-layer{position:fixed;inset:0;pointer-events:none;z-index:0}
-    .bubbles{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden}
-    .bubble{position:absolute;border-radius:999px;background:rgba(255,255,255,0.06);box-shadow:0 6px 26px rgba(3,19,24,.12);backdrop-filter: blur(2px)}
-
     /* ZONES */
     section{padding:56px 0;position:relative;z-index:1}
-    .zone{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));box-shadow:0 6px 24px rgba(0,0,0,.12)}
+    .zone{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));box-shadow:0 6px 24px rgba(0,0,0,.12)}
 
     /* SERVICES */
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
-    .service{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:140px}
+    .service{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:140px;color:var(--text)}
+    .service h3{color:var(--text);margin:6px 0}
+    .service p{color:var(--muted-2)}
 
     /* PORTFOLIO */
     .reef{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
-    .reef-card{position:relative;border-radius:12px;overflow:hidden;min-height:160px}
+    .reef-card{position:relative;border-radius:12px;overflow:hidden;min-height:160px;background:#061e29}
     .reef-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .45s var(--ease)}
     .reef-card:hover img{transform:scale(1.06)}
-    .reef-card .meta{position:absolute;left:12px;bottom:12px;padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.12));backdrop-filter: blur(4px);font-size:13px}
+    .reef-card .meta{position:absolute;left:12px;bottom:12px;padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.12));backdrop-filter: blur(4px);font-size:13px;color:var(--text)}
 
     /* TEAM */
     .team{display:flex;gap:12px;flex-wrap:wrap}
-    .member{background:var(--glass);padding:12px;border-radius:12px;min-width:180px;flex:1 1 220px}
+    .member{background:var(--glass);padding:12px;border-radius:12px;min-width:180px;flex:1 1 220px;color:var(--text)}
     .avatar{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#9be7ff,#5ec5ff);display:inline-block;vertical-align:middle}
 
     /* CONTACT */
     .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
     form{display:flex;flex-direction:column;gap:10px}
-    input,textarea{padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);color:inherit}
+    input,textarea{padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.035);color:var(--text)}
+    input::placeholder, textarea::placeholder{color:rgba(234,246,255,0.6)}
     .msg-bottle{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
 
-    footer{padding:30px 0;color:rgba(230,243,251,.7)}
+    footer{padding:30px 0;color:var(--muted-2)}
 
     /* MICRO-INTERACTIONS */
     .reveal{opacity:0;transform:translateY(18px);transition:all .72s var(--ease)}
     .reveal.show{opacity:1;transform:none}
 
     /* small tweaks */
-    .muted{opacity:.85;font-size:13px}
+    .muted{opacity:.85;font-size:13px;color:var(--muted-2)}
 
     /* RESPONSIVE */
     @media (max-width:1000px){
@@ -205,7 +221,7 @@
         <div class="device" role="region" aria-label="portfolio device mock">
           <div class="screen" id="screen">
             <div style="text-align:center;padding:8px">
-              <div style="font-weight:800;font-size:18px;margin-bottom:6px">Case Study — Shoreline Skincare</div>
+              <div style="font-weight:700;font-size:18px;margin-bottom:6px">Case Study — Shoreline Skincare</div>
               <div style="opacity:.92;font-size:14px">+78% engagement in 60 days • +22% sales from IG</div>
             </div>
           </div>
@@ -351,11 +367,12 @@
     <button id="soundToggle" aria-pressed="false">🔊</button>
   </div>
 
-  <audio id="ambience" loop src="" aria-hidden="true"></audio>
+  <audio id="ambience" loop src="assets/audio/ocean.mp3" aria-hidden="true"></audio>
 
   <script>
     /* =====================
        JS - Interactivity + mobile-friendly fixes
+       (unchanged behaviour) 
        =====================*/
     (function(){
       const qs = s=>document.querySelector(s);
