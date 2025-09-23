@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tira Creatives — Ocean Themed Social Media & Content Marketing Agency</title>
   <meta name="description" content="Tira Creatives — Social Media & Content Marketing Agency. Dive into our ocean of ideas." />
+  <meta name="theme-color" content="#063a4a" />
   <style>
     /* ==========================
-       Tira Creatives - Single File
-       HTML + CSS + JS
-       Producer: ChatGPT (made for jordan)
+       Tira Creatives - Responsive + Fixed Layout
+       Single file: HTML + CSS + JS
        ========================== */
 
     :root{
@@ -22,6 +22,7 @@
       --glass-strong: rgba(255,255,255,0.12);
       --max-width:1200px;
       --ease: cubic-bezier(.2,.9,.22,1);
+      --gap:18px;
     }
 
     *{box-sizing:border-box}
@@ -33,66 +34,69 @@
       color: #e6f3fb;
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
+      line-height:1.4;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* CONTAINER */
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:40px 20px}
+    /* layout container */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px 20px}
 
-    /* NAV / LAYOUT */
-    header{
-      position:sticky;top:14px;z-index:40;pointer-events:auto
-    }
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;padding:8px 14px;border-radius:12px
-    }
+    /* NAV */
+    header{position:sticky;top:12px;z-index:70}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border-radius:12px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff8a65);display:grid;place-items:center;font-weight:700;color:#023047;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg)}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff8a65);display:grid;place-items:center;font-weight:800;color:#023047;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg)}
     .brand h1{font-size:18px;margin:0}
-    .nav a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:999px;backdrop-filter: blur(6px);background:var(--glass-strong);font-weight:600}
+    /* desktop links */
+    .nav-links{display:flex;gap:8px;align-items:center}
+    .nav-links a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:999px;background:var(--glass-strong);font-weight:600}
+
+    /* mobile hamburger */
+    .hamburger{display:none;background:transparent;border:0;color:inherit;font-size:22px}
+    .mobile-menu{display:none;position:fixed;right:12px;top:72px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter:blur(6px);padding:12px;border-radius:12px;box-shadow:0 12px 30px rgba(2,43,58,.35)}
+    .mobile-menu a{display:block;padding:8px 10px;border-radius:8px;margin-bottom:6px}
 
     /* HERO */
-    .hero{min-height:78vh;display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;padding:40px 0}
-    .hero .left{padding:20px}
-    .kicker{display:inline-block;background:rgba(255,255,255,.06);padding:6px 10px;border-radius:999px;margin-bottom:18px}
-    h2{font-size:36px;line-height:1.02;margin:0 0 18px}
-    p.lead{opacity:.95;margin:0 0 20px;color:rgba(230,243,251,.95)}
-    .cta-row{display:flex;gap:12px}
-    .btn{padding:12px 16px;border-radius:12px;cursor:pointer;border:0;font-weight:700}
+    .hero{min-height:70vh;display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;padding:30px 0}
+    .hero .left{padding:8px}
+    .kicker{display:inline-block;background:rgba(255,255,255,.06);padding:6px 10px;border-radius:999px;margin-bottom:14px;font-size:13px}
+    h2{font-size:36px;line-height:1.04;margin:0 0 14px}
+    p.lead{opacity:.95;margin:0 0 18px;color:rgba(230,243,251,.95)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:12px;cursor:pointer;border:0;font-weight:700}
     .btn-primary{background:linear-gradient(90deg,#ffd166,#ff8a65);color:#04293a}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.06)}
 
-    /* HERO RIGHT - glass card with mock phone / portfolio */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:18px;padding:18px;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,43,58,.35);position:relative;overflow:hidden}
+    /* CARD / DEVICE */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:18px;padding:14px;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,43,58,.35);position:relative;overflow:hidden}
     .device{width:100%;height:340px;border-radius:12px;background:linear-gradient(180deg,#0b5d76,#063a4a);display:flex;flex-direction:column;padding:14px}
-    .device .screen{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#083b50,#05292f);display:grid;place-items:center;color:rgba(255,255,255,.95)}
+    .device .screen{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#083b50,#05292f);display:grid;place-items:center;color:rgba(255,255,255,.95);transform-origin:center}
     .client-logos{display:flex;gap:8px;padding-top:10px;align-items:center}
     .client-logos img{width:34px;height:34px;border-radius:6px;object-fit:cover}
 
     /* FLOATING MARINE ELEMENTS */
     .sea-layer{position:fixed;inset:0;pointer-events:none;z-index:0}
-    .bubbles{position:absolute;left:4%;top:10%;width:92%;height:90%;overflow:hidden}
+    .bubbles{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden}
     .bubble{position:absolute;border-radius:999px;background:rgba(255,255,255,0.06);box-shadow:0 6px 26px rgba(3,19,24,.12);backdrop-filter: blur(2px)}
 
-    /* PARALLAX ZONES */
-    section{padding:80px 0;position:relative;z-index:1}
-    .zone{padding:40px 20px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));box-shadow:0 6px 24px rgba(0,0,0,.16)}
+    /* ZONES */
+    section{padding:56px 0;position:relative;z-index:1}
+    .zone{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));box-shadow:0 6px 24px rgba(0,0,0,.12)}
 
-    /* SERVICES GRID */
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .service{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:160px}
-    .service h3{margin:6px 0}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700}
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
+    .service{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:140px}
 
-    /* PORTFOLIO - coral reef */
-    .reef{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .reef-card{position:relative;border-radius:12px;overflow:hidden;min-height:220px}
-    .reef-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .6s var(--ease)}
+    /* PORTFOLIO */
+    .reef{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
+    .reef-card{position:relative;border-radius:12px;overflow:hidden;min-height:160px}
+    .reef-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .45s var(--ease)}
     .reef-card:hover img{transform:scale(1.06)}
-    .reef-card .meta{position:absolute;left:12px;bottom:12px;padding:10px 12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));backdrop-filter: blur(4px)}
+    .reef-card .meta{position:absolute;left:12px;bottom:12px;padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.12));backdrop-filter: blur(4px);font-size:13px}
 
-    /* ABOUT - team */
-    .team{display:flex;gap:10px;flex-wrap:wrap}
-    .member{background:var(--glass);padding:12px;border-radius:12px;min-width:180px}
+    /* TEAM */
+    .team{display:flex;gap:12px;flex-wrap:wrap}
+    .member{background:var(--glass);padding:12px;border-radius:12px;min-width:180px;flex:1 1 220px}
     .avatar{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#9be7ff,#5ec5ff);display:inline-block;vertical-align:middle}
 
     /* CONTACT */
@@ -101,19 +105,39 @@
     input,textarea{padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);color:inherit}
     .msg-bottle{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
 
-    /* FOOTER */
-    footer{padding:40px 0;color:rgba(230,243,251,.7)}
+    footer{padding:30px 0;color:rgba(230,243,251,.7)}
 
     /* MICRO-INTERACTIONS */
-    .reveal{opacity:0;transform:translateY(24px);transition:all .8s var(--ease)}
+    .reveal{opacity:0;transform:translateY(18px);transition:all .72s var(--ease)}
     .reveal.show{opacity:1;transform:none}
 
+    /* small tweaks */
+    .muted{opacity:.85;font-size:13px}
+
     /* RESPONSIVE */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;min-height:80vh}
-      .contact-grid{grid-template-columns:1fr}
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr 360px;padding:22px 0}
+      h2{font-size:30px}
+    }
+    @media (max-width:820px){
+      .nav-links{display:none}
+      .hamburger{display:block}
+      .mobile-menu{display:none}
+      .hero{grid-template-columns:1fr;gap:18px;min-height:75vh}
       .device{height:260px}
-      .wrap{padding:24px}
+      .contact-grid{grid-template-columns:1fr}
+      section{padding:36px 0}
+      .wrap{padding:18px}
+    }
+
+    @media (max-width:480px){
+      h2{font-size:22px}
+      .kicker{font-size:12px}
+      .logo{width:44px;height:44px}
+      .brand h1{font-size:16px}
+      .btn{padding:10px 12px}
+      .reef-card{min-height:140px}
+      .member{flex-basis:100%}
     }
 
     /* Reduced motion */
@@ -121,9 +145,8 @@
       *{transition:none!important;animation:none!important}
     }
 
-    /* Lighthouse/Beacon nav transform */\    
-    .beacon{position:fixed;right:28px;bottom:28px;z-index:60;pointer-events:auto}
-    .beacon button{width:64px;height:64px;border-radius:50%;border:0;background:linear-gradient(180deg,#ffd166,#ff8a65);display:grid;place-items:center;font-weight:900;box-shadow:0 12px 30px rgba(2,16,25,.4)}
+    /* mobile menu visible */
+    .mobile-menu.show{display:block}
 
   </style>
 </head>
@@ -141,14 +164,24 @@
         <div class="logo">TC</div>
         <div>
           <h1>Tira Creatives</h1>
-          <div style="font-size:12px;opacity:.85">Social Media & Content Marketing — ocean inspired</div>
+          <div class="muted">Social Media & Content Marketing — ocean inspired</div>
         </div>
       </div>
-      <div style="display:flex;gap:8px;align-items:center">
+
+      <div class="nav-links" id="navLinks">
         <a href="#services">Services</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#about">About</a>
         <a href="#contact" class="pill">Let's dive</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+
+      <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
@@ -163,7 +196,7 @@
           <button class="btn btn-primary" id="cta-audit">Free audit</button>
           <button class="btn btn-ghost" id="cta-portfolio">View Reef (Portfolio)</button>
         </div>
-        <div style="margin-top:18px;font-size:13px;opacity:.9">
+        <div style="margin-top:16px;font-size:13px;opacity:.95">
           <strong>Pro tip:</strong> Start with a 30-day pilot — small risk, real results.
         </div>
       </div>
@@ -171,15 +204,15 @@
       <div class="card" aria-hidden="false">
         <div class="device" role="region" aria-label="portfolio device mock">
           <div class="screen" id="screen">
-            <div style="text-align:center">
-              <div style="font-weight:800;font-size:20px;margin-bottom:6px">Case Study — Shoreline Skincare</div>
-              <div style="opacity:.9">+78% engagement in 60 days • +22% sales from IG</div>
+            <div style="text-align:center;padding:8px">
+              <div style="font-weight:800;font-size:18px;margin-bottom:6px">Case Study — Shoreline Skincare</div>
+              <div style="opacity:.92;font-size:14px">+78% engagement in 60 days • +22% sales from IG</div>
             </div>
           </div>
           <div class="client-logos" aria-hidden="true">
-            <img src="" alt="client A" />
-            <img src="" alt="client B" />
-            <img src="" alt="client C" />
+            <img src="https://via.placeholder.com/64x64?text=A" alt="client A" />
+            <img src="https://via.placeholder.com/64x64?text=B" alt="client B" />
+            <img src="https://via.placeholder.com/64x64?text=C" alt="client C" />
           </div>
         </div>
       </div>
@@ -259,8 +292,9 @@
           <p style="margin-top:10px;font-size:13px">Data-first ad strategist. Will make your CPA cry (in a good way).</p>
         </div>
         <div class="member">
-          <div class="member"><div style="display:flex;gap:10px;align-items:center"><div class="avatar"></div><div><strong>Ravi</strong><div style="font-size:12px;opacity:.85">Head of Content</div></div></div>
-          <p style="margin-top:10px;font-size:13px">Writes scripts, shoots UGC and edits at 2x speed when caffeine's present.</p></div>
+          <div style="display:flex;gap:10px;align-items:center"><div class="avatar"></div><div><strong>Ravi</strong><div style="font-size:12px;opacity:.85">Head of Content</div></div></div>
+          <p style="margin-top:10px;font-size:13px">Writes scripts, shoots UGC and edits at 2x speed when caffeine's present.</p>
+        </div>
       </div>
     </section>
 
@@ -290,7 +324,7 @@
           <input type="email" name="email" placeholder="Email" required />
           <input type="text" name="company" placeholder="Company" />
           <textarea name="message" rows="5" placeholder="Tell us about your challenge"></textarea>
-          <div style="display:flex;gap:8px;align-items:center">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <button class="btn btn-primary" type="submit">Send message</button>
             <button class="btn btn-ghost" type="button" id="demo-btn">Request free audit</button>
           </div>
@@ -314,61 +348,69 @@
   </main>
 
   <div class="beacon" title="Ambient toggle">
-    <button id="soundToggle">🔊</button>
+    <button id="soundToggle" aria-pressed="false">🔊</button>
   </div>
 
   <audio id="ambience" loop src="" aria-hidden="true"></audio>
 
   <script>
     /* =====================
-       JS - Interactivity + Effects
+       JS - Interactivity + mobile-friendly fixes
        =====================*/
     (function(){
-      // Simple helpers
       const qs = s=>document.querySelector(s);
       const qsa = s=>document.querySelectorAll(s);
 
-      // Reveal on scroll
+      // Mobile menu
+      const hamburger = qs('#hamburger');
+      const mobileMenu = qs('#mobileMenu');
+      hamburger && hamburger.addEventListener('click',()=>{
+        const open = mobileMenu.classList.toggle('show');
+        mobileMenu.setAttribute('aria-hidden', String(!open));
+      });
+
+      // Close mobile menu on nav click
+      qsa('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('show');mobileMenu.setAttribute('aria-hidden','true')}));
+
+      // Intersection reveal
       const reveals = qsa('.reveal');
       const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting) e.target.classList.add('show');
-        });
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
       },{threshold:0.12});
       reveals.forEach(r=>io.observe(r));
 
-      // Bubbles generator
+      // Bubbles generator - reduced frequency on mobile
       const bubblesWrap = qs('#bubbles');
       function makeBubble(){
         const b = document.createElement('div');
         b.className='bubble';
-        const size = 8 + Math.random()*44;
+        const size = 6 + Math.random()*36;
         b.style.width = size+'px';
         b.style.height = size+'px';
         b.style.left = (Math.random()*100)+'%';
-        b.style.top = (20 + Math.random()*70)+'%';
-        b.style.opacity = (0.05 + Math.random()*0.3);
+        b.style.top = (10 + Math.random()*80)+'%';
+        b.style.opacity = (0.04 + Math.random()*0.28);
         bubblesWrap.appendChild(b);
-        // float animation
-        const dur = 12 + Math.random()*18;
+        const dur = 10 + Math.random()*12;
         b.animate([
           {transform:'translateY(0) scale(1)'},
-          {transform:'translateY(-200px) scale(.8)'}
+          {transform:'translateY(-220px) scale(.8)'}
         ],{duration:dur*1000,iterations:Infinity,easing:'linear'});
-        // cleanup when offscreen
         setTimeout(()=>{ if(b.parentNode) b.remove() }, (dur*1000)+2000);
       }
       if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-        setInterval(makeBubble,600);
+        const interval = window.matchMedia('(max-width:820px)').matches ? 900 : 600;
+        setInterval(makeBubble, interval);
       }
 
-      // Ripple canvas for click/mouse
+      // Ripple canvas
       const canvas = qs('#ripple-canvas');
-      const ctx = canvas.getContext('2d');
-      let W=canvas.width=innerWidth; let H=canvas.height=innerHeight;
-      window.addEventListener('resize',()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight});
+      const ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
+      let W=window.innerWidth, H=window.innerHeight; if(canvas){canvas.width=W;canvas.height=H}
+      window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight});
       const ripples=[];
       function draw(){
+        if(!ctx) return requestAnimationFrame(draw);
         ctx.clearRect(0,0,W,H);
         for(let i=ripples.length-1;i>=0;i--){
           const r = ripples[i];
@@ -377,7 +419,7 @@
           ctx.strokeStyle = `rgba(255,255,255,${r.alpha})`;
           ctx.lineWidth = 2;
           ctx.stroke();
-          r.rad+=r.speed; r.alpha-=0.008;
+          r.rad+=r.speed; r.alpha-=0.01;
           if(r.alpha<=0) ripples.splice(i,1);
         }
         requestAnimationFrame(draw);
@@ -385,77 +427,48 @@
       draw();
       ['click','mousemove'].forEach(evt=>{
         window.addEventListener(evt,(e)=>{
-          if(evt==='mousemove' && Math.random()>0.04) return; // reduce perf cost
+          if(evt==='mousemove' && Math.random()>0.04) return;
           ripples.push({x:e.clientX,y:e.clientY,rad:8,alpha:0.45,speed:2+Math.random()*3});
         });
       });
 
-      // CTA buttons
-      qs('#cta-audit').addEventListener('click',()=>{
-        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-        qs('input[name="name"]').focus();
-      });
-      qs('#cta-portfolio').addEventListener('click',()=>{qs('#portfolio').scrollIntoView({behavior:'smooth'})});
+      // CTA wiring
+      qs('#cta-audit') && qs('#cta-audit').addEventListener('click',()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth'});qs('input[name="name"]').focus();});
+      qs('#cta-portfolio') && qs('#cta-portfolio').addEventListener('click',()=>{qs('#portfolio').scrollIntoView({behavior:'smooth'})});
 
-      // Reef hover audio demo (tiny microinteraction)
+      // Reef card micro interactions (touch friendly)
       qsa('.reef-card').forEach(card=>{
-        card.addEventListener('mouseenter',()=>{card.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:350,fill:'forwards'})});
-        card.addEventListener('mouseleave',()=>{card.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:350,fill:'forwards'})});
+        card.addEventListener('mouseenter',()=>{card.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:280,fill:'forwards'})});
+        card.addEventListener('mouseleave',()=>{card.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:280,fill:'forwards'})});
+        // tap -> focus
+        card.addEventListener('click',()=>{card.focus();});
       });
 
-      // Contact form fake submit
-      qs('#contactForm').addEventListener('submit',(e)=>{
-        e.preventDefault();
-        const name = e.target.name.value || 'friend';
-        alert('Message received, '+name+' — we\'ll send a free audit within 48 hours.');
-        e.target.reset();
-      });
+      // Contact form faux submit
+      qs('#contactForm') && qs('#contactForm').addEventListener('submit',(e)=>{e.preventDefault();const name = e.target.name.value || 'friend';alert('Message received, '+name+' — we\'ll send a free audit within 48 hours.');e.target.reset();});
+      qs('#demo-btn') && qs('#demo-btn').addEventListener('click',()=>{alert('Request noted. We\'ll ping you with 3 quick wins.')});
 
-      // Demo button
-      qs('#demo-btn').addEventListener('click',()=>{
-        alert('Request noted. We\'ll ping you with 3 quick wins.');
-      });
-
-      // Ambient sound toggle (user must provide file if used locally)
-      const amb = qs('#ambience');
-      const soundBtn = qs('#soundToggle');
+      // Ambient sound toggle
+      const amb = qs('#ambience'); const soundBtn = qs('#soundToggle');
       let playing=false;
-      soundBtn.addEventListener('click',()=>{
-        if(!amb.src){
-          // lightweight synthesized ambience fallback
-          alert('No local ambience file included. To enable ambient sound, set the <audio id="ambience"> src attribute to an .mp3 file.');
-          return;
-        }
-        if(playing){amb.pause(); soundBtn.textContent='🔇'; playing=false}
-        else{amb.play(); soundBtn.textContent='🔊'; playing=true}
+      soundBtn && soundBtn.addEventListener('click',()=>{
+        if(!amb || !amb.src){alert('No ambience file set. Add assets/audio/ocean.mp3 and set <audio id="ambience" src="assets/audio/ocean.mp3">');return}
+        if(playing){amb.pause(); soundBtn.textContent='🔇'; soundBtn.setAttribute('aria-pressed','false'); playing=false}
+        else{amb.play(); soundBtn.textContent='🔊'; soundBtn.setAttribute('aria-pressed','true'); playing=true}
       });
 
-      // Mouse tracking underwater current effect
+      // mouse tracking for subtle device parallax
       let mouseX=0, mouseY=0; document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
-      // small floating transform for the device screen
-      (function loop(){
-        const s = qs('#screen');
-        const nx = (mouseX - window.innerWidth/2) / window.innerWidth * 8;
-        const ny = (mouseY - window.innerHeight/2) / window.innerHeight * 6;
-        if(s) s.style.transform = `translate(${nx}px, ${ny}px)`;
-        requestAnimationFrame(loop);
-      })();
+      (function loop(){const s = qs('#screen');if(s){const nx = (mouseX - window.innerWidth/2) / window.innerWidth * 8;const ny = (mouseY - window.innerHeight/2) / window.innerHeight * 6;s.style.transform = `translate(${nx}px, ${ny}px)`;}requestAnimationFrame(loop);})();
 
-      // Lighthouse beacon (scroll to top)
-      qs('.beacon button').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
+      // lighthouse beacon scroll to top
+      qs('.beacon button') && qs('.beacon button').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
 
-      // Accessibility: respect reduced-motion
-      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-        document.documentElement.style.setProperty('--ease','linear');
-      }
+      // Respect reduced motion
+      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.style.setProperty('--ease','linear');}
 
-      // Tiny SEO-friendly dynamic title change based on scroll depth
-      window.addEventListener('scroll',()=>{
-        const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
-        if(p<0.15) document.title = 'Tira Creatives — We make waves';
-        else if(p<0.5) document.title = 'Tira Creatives — Our Work (Reef)';
-        else document.title = 'Tira Creatives — Dive Deeper';
-      });
+      // SEO-friendly dynamic title
+      window.addEventListener('scroll',()=>{const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);if(p<0.15) document.title = 'Tira Creatives — We make waves'; else if(p<0.5) document.title = 'Tira Creatives — Our Work (Reef)'; else document.title = 'Tira Creatives — Dive Deeper';});
 
     })();
   </script>
