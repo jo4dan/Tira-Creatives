@@ -372,13 +372,43 @@
   <script>
     /* =====================
        JS - Interactivity + mobile-friendly fixes
-       (unchanged behaviour) 
+       (with auto-scroll fixes baked in)
        =====================*/
     (function(){
       const qs = s=>document.querySelector(s);
       const qsa = s=>document.querySelectorAll(s);
 
-      // Mobile menu
+      // ====== AUTO-SCROLL PREVENTION (baked) ======
+      // stop browser auto-restoring scroll on back/refresh
+      if ('scrollRestoration' in history) {
+        try { history.scrollRestoration = 'manual'; } catch(e){}
+      }
+      // remove any hash so browser doesn't jump to anchor on load
+      if(location.hash){
+        try{ history.replaceState(null,'', location.pathname + location.search); }catch(e){}
+      }
+      // ensure no smooth programmatic scroll on load
+      try{ document.documentElement.style.scrollBehavior = 'auto'; }catch(e){}
+      // ensure we start at top
+      try{ window.scrollTo(0,0); }catch(e){}
+
+      // Safe focus wrapper: prevents focus() from forcing scroll
+      try{
+        const _origFocus = HTMLElement.prototype.focus;
+        HTMLElement.prototype.focus = function(opts){
+          try { return _origFocus.call(this, opts ?? {preventScroll:true}); }
+          catch(e){
+            const px = window.scrollX, py = window.scrollY;
+            const res = _origFocus.call(this);
+            window.scrollTo(px, py);
+            return res;
+          }
+        };
+        // keep a reference in case you want to restore later
+        HTMLElement.prototype.__orig_focus = _origFocus;
+      }catch(e){/* ignore */}
+
+      // ====== MOBILE MENU ======
       const hamburger = qs('#hamburger');
       const mobileMenu = qs('#mobileMenu');
       hamburger && hamburger.addEventListener('click',()=>{
@@ -449,16 +479,26 @@
         });
       });
 
-      // CTA wiring
-      qs('#cta-audit') && qs('#cta-audit').addEventListener('click',()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth'});qs('input[name="name"]').focus();});
+      // CTA wiring (focus uses safe focus now)
+      qs('#cta-audit') && qs('#cta-audit').addEventListener('click',()=>{
+        // user-initiated scroll is fine; we use smooth here intentionally
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        // focus safely without forcing scroll (browser supports preventScroll via our wrapper)
+        const nameInput = qs('input[name="name"]');
+        try { nameInput && nameInput.focus({preventScroll:true}); } catch(e){ try { nameInput && nameInput.focus(); } catch(e2){} }
+      });
+
       qs('#cta-portfolio') && qs('#cta-portfolio').addEventListener('click',()=>{qs('#portfolio').scrollIntoView({behavior:'smooth'})});
 
       // Reef card micro interactions (touch friendly)
       qsa('.reef-card').forEach(card=>{
         card.addEventListener('mouseenter',()=>{card.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:280,fill:'forwards'})});
         card.addEventListener('mouseleave',()=>{card.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:280,fill:'forwards'})});
-        // tap -> focus
-        card.addEventListener('click',()=>{card.focus();});
+        // tap -> focus WITHOUT scrolling
+        card.addEventListener('click',()=>{
+          try{ card.focus({preventScroll:true}); }
+          catch(e){ const px=window.scrollX, py=window.scrollY; try{ card.focus(); }catch(e2){} window.scrollTo(px,py); }
+        });
       });
 
       // Contact form faux submit
