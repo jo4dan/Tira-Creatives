@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* ==========================
-       Tira Creatives - Color & Font fixes
+       Tira Creatives - Final patched
        ========================== */
 
     :root{
@@ -20,8 +20,8 @@
       --deep:#022b3a;
       --accent:#ffd166;
       --accent-2:#ff8a65;
-      --text: #eaf6ff;            /* primary readable text */
-      --muted: rgba(234,246,255,0.82); /* slightly less intense */
+      --text: #eaf6ff;
+      --muted: rgba(234,246,255,0.82);
       --muted-2: rgba(234,246,255,0.65);
       --glass: rgba(255,255,255,0.06);
       --glass-strong: rgba(255,255,255,0.10);
@@ -32,6 +32,8 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
+    /* force instant scroll behavior by default to avoid unexpected smooth jumps */
+    html{scroll-behavior:auto !important}
     body{
       margin:0;
       font-family:'Poppins', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -43,38 +45,20 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* layout container */
     .wrap{max-width:var(--max-width);margin:0 auto;padding:28px 20px}
-
-    /* NAV */
     header{position:sticky;top:12px;z-index:70}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border-radius:12px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:#05323b;box-shadow:0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg);font-family:'Poppins',sans-serif}
     .brand h1{font-size:18px;margin:0;color:var(--text);letter-spacing:0.2px}
-
-    /* desktop links */
     .nav-links{display:flex;gap:8px;align-items:center}
-    .nav-links a{
-      color:var(--text);
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius:999px;
-      background:var(--glass);
-      font-weight:600;
-      transition:all .22s var(--ease);
-    }
+    .nav-links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;background:var(--glass);font-weight:600;transition:all .22s var(--ease)}
     .nav-links a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.12)}
-
-    /* pill variant */
     .pill{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04293a;padding:8px 12px;border-radius:999px;font-weight:700}
-
-    /* mobile hamburger */
     .hamburger{display:none;background:transparent;border:0;color:var(--text);font-size:22px}
     .mobile-menu{display:none;position:fixed;right:12px;top:72px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter:blur(6px);padding:12px;border-radius:12px;box-shadow:0 12px 30px rgba(2,43,58,.35)}
     .mobile-menu a{display:block;padding:8px 10px;border-radius:8px;margin-bottom:6px;color:var(--text)}
 
-    /* HERO */
     .hero{min-height:70vh;display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;padding:30px 0}
     .hero .left{padding:8px}
     .kicker{display:inline-block;background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;margin-bottom:14px;font-size:13px;color:var(--muted)}
@@ -85,36 +69,28 @@
     .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04293a}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
-    /* CARD / DEVICE */
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:18px;padding:14px;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,43,58,.35);position:relative;overflow:hidden}
     .device{width:100%;height:340px;border-radius:12px;background:linear-gradient(180deg,#0b5d76,#063a4a);display:flex;flex-direction:column;padding:14px}
     .device .screen{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#083b50,#05292f);display:grid;place-items:center;color:var(--text);transform-origin:center}
-    .client-logos{display:flex;gap:8px;padding-top:10px;align-items:center}
-    .client-logos img{width:34px;height:34px;border-radius:6px;object-fit:cover}
 
-    /* ZONES */
     section{padding:56px 0;position:relative;z-index:1}
     .zone{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));box-shadow:0 6px 24px rgba(0,0,0,.12)}
 
-    /* SERVICES */
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
     .service{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:140px;color:var(--text)}
     .service h3{color:var(--text);margin:6px 0}
     .service p{color:var(--muted-2)}
 
-    /* PORTFOLIO */
     .reef{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
     .reef-card{position:relative;border-radius:12px;overflow:hidden;min-height:160px;background:#061e29}
     .reef-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .45s var(--ease)}
     .reef-card:hover img{transform:scale(1.06)}
     .reef-card .meta{position:absolute;left:12px;bottom:12px;padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.12));backdrop-filter: blur(4px);font-size:13px;color:var(--text)}
 
-    /* TEAM */
     .team{display:flex;gap:12px;flex-wrap:wrap}
     .member{background:var(--glass);padding:12px;border-radius:12px;min-width:180px;flex:1 1 220px;color:var(--text)}
     .avatar{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#9be7ff,#5ec5ff);display:inline-block;vertical-align:middle}
 
-    /* CONTACT */
     .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
     form{display:flex;flex-direction:column;gap:10px}
     input,textarea{padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.035);color:var(--text)}
@@ -123,47 +99,16 @@
 
     footer{padding:30px 0;color:var(--muted-2)}
 
-    /* MICRO-INTERACTIONS */
     .reveal{opacity:0;transform:translateY(18px);transition:all .72s var(--ease)}
     .reveal.show{opacity:1;transform:none}
 
-    /* small tweaks */
     .muted{opacity:.85;font-size:13px;color:var(--muted-2)}
 
-    /* RESPONSIVE */
-    @media (max-width:1000px){
-      .hero{grid-template-columns:1fr 360px;padding:22px 0}
-      h2{font-size:30px}
-    }
-    @media (max-width:820px){
-      .nav-links{display:none}
-      .hamburger{display:block}
-      .mobile-menu{display:none}
-      .hero{grid-template-columns:1fr;gap:18px;min-height:75vh}
-      .device{height:260px}
-      .contact-grid{grid-template-columns:1fr}
-      section{padding:36px 0}
-      .wrap{padding:18px}
-    }
-
-    @media (max-width:480px){
-      h2{font-size:22px}
-      .kicker{font-size:12px}
-      .logo{width:44px;height:44px}
-      .brand h1{font-size:16px}
-      .btn{padding:10px 12px}
-      .reef-card{min-height:140px}
-      .member{flex-basis:100%}
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion:reduce){
-      *{transition:none!important;animation:none!important}
-    }
-
-    /* mobile menu visible */
+    @media (max-width:1000px){.hero{grid-template-columns:1fr 360px;padding:22px 0}h2{font-size:30px}}
+    @media (max-width:820px){.nav-links{display:none}.hamburger{display:block}.mobile-menu{display:none}.hero{grid-template-columns:1fr;gap:18px;min-height:75vh}.device{height:260px}.contact-grid{grid-template-columns:1fr}section{padding:36px 0}.wrap{padding:18px}}
+    @media (max-width:480px){h2{font-size:22px}.kicker{font-size:12px}.logo{width:44px;height:44px}.brand h1{font-size:16px}.btn{padding:10px 12px}.reef-card{min-height:140px}.member{flex-basis:100%}}
+    @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
     .mobile-menu.show{display:block}
-
   </style>
 </head>
 <body>
@@ -185,19 +130,19 @@
       </div>
 
       <div class="nav-links" id="navLinks">
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="pill">Let's dive</a>
+        <a href="#services" data-scrolly>Services</a>
+        <a href="#portfolio" data-scrolly>Portfolio</a>
+        <a href="#about" data-scrolly>About</a>
+        <a href="#contact" data-scrolly class="pill">Let's dive</a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
 
       <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#services" data-scrolly>Services</a>
+        <a href="#portfolio" data-scrolly>Portfolio</a>
+        <a href="#about" data-scrolly>About</a>
+        <a href="#contact" data-scrolly>Contact</a>
       </div>
     </nav>
   </header>
@@ -371,28 +316,30 @@
 
   <script>
     /* =====================
-       JS - Interactivity + mobile-friendly fixes
-       (with auto-scroll fixes baked in)
+       JS - Interactivity + final anti-auto-scroll patches
        =====================*/
     (function(){
       const qs = s=>document.querySelector(s);
       const qsa = s=>document.querySelectorAll(s);
 
-      // ====== AUTO-SCROLL PREVENTION (baked) ======
-      // stop browser auto-restoring scroll on back/refresh
-      if ('scrollRestoration' in history) {
-        try { history.scrollRestoration = 'manual'; } catch(e){}
-      }
-      // remove any hash so browser doesn't jump to anchor on load
-      if(location.hash){
-        try{ history.replaceState(null,'', location.pathname + location.search); }catch(e){}
-      }
-      // ensure no smooth programmatic scroll on load
-      try{ document.documentElement.style.scrollBehavior = 'auto'; }catch(e){}
-      // ensure we start at top
-      try{ window.scrollTo(0,0); }catch(e){}
+      // ====== STRONG AUTO-SCROLL PREVENTION ======
+      try{
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      }catch(e){}
 
-      // Safe focus wrapper: prevents focus() from forcing scroll
+      try{ if(location.hash) history.replaceState(null,'', location.pathname + location.search); }catch(e){}
+
+      try{ document.documentElement.style.scrollBehavior = 'auto'; }catch(e){}
+
+      // Ensure fully at top after DOM ready + on load (double-safe)
+      window.addEventListener('DOMContentLoaded', ()=>{
+        try{ window.scrollTo(0,0); }catch(e){}
+        // extra micro-delay to defeat racey browser restores
+        setTimeout(()=>{ try{ window.scrollTo(0,0); }catch(e){} }, 50);
+      });
+      window.addEventListener('load', ()=>{ try{ window.scrollTo(0,0); }catch(e){} });
+
+      // Safe focus wrapper (prevent visual jump)
       try{
         const _origFocus = HTMLElement.prototype.focus;
         HTMLElement.prototype.focus = function(opts){
@@ -400,13 +347,37 @@
           catch(e){
             const px = window.scrollX, py = window.scrollY;
             const res = _origFocus.call(this);
-            window.scrollTo(px, py);
+            try{ window.scrollTo(px, py); }catch(e){}
             return res;
           }
         };
-        // keep a reference in case you want to restore later
         HTMLElement.prototype.__orig_focus = _origFocus;
-      }catch(e){/* ignore */}
+      }catch(e){}
+
+      // ====== NAV / LINK BEHAVIOR: intercept anchors to control scrolling ======
+      function scrollToElementSmooth(el){
+        if(!el) return;
+        try{ el.scrollIntoView({behavior:'smooth',block:'start'}); }
+        catch(e){ try{ el.scrollIntoView(); }catch(e){} }
+      }
+
+      // intercept links with data-scrolly attribute (both desktop/mobile)
+      qsa('a[data-scrolly]').forEach(a=>{
+        a.addEventListener('click', (ev)=>{
+          ev.preventDefault();
+          const href = a.getAttribute('href');
+          if(!href || href.charAt(0) !== '#') return;
+          const target = document.querySelector(href);
+          scrollToElementSmooth(target);
+          // try to focus the first focusable inside target without scrolling
+          if(target){
+            const focusable = target.querySelector('input, button, a, textarea, [tabindex]');
+            if(focusable){ try{ focusable.focus({preventScroll:true}); }catch(e){} }
+          }
+          // close mobile menu if open
+          try{ const mm = qs('#mobileMenu'); if(mm && mm.classList.contains('show')) mm.classList.remove('show'); }catch(e){}
+        });
+      });
 
       // ====== MOBILE MENU ======
       const hamburger = qs('#hamburger');
@@ -416,116 +387,68 @@
         mobileMenu.setAttribute('aria-hidden', String(!open));
       });
 
-      // Close mobile menu on nav click
-      qsa('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('show');mobileMenu.setAttribute('aria-hidden','true')}));
+      qsa('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{ if(mobileMenu){ mobileMenu.classList.remove('show'); mobileMenu.setAttribute('aria-hidden','true'); } }));
 
-      // Intersection reveal
+      // ====== Intersection reveals ======
       const reveals = qsa('.reveal');
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
-      },{threshold:0.12});
-      reveals.forEach(r=>io.observe(r));
+      try{
+        const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }); },{threshold:0.12});
+        reveals.forEach(r=>io.observe(r));
+      }catch(e){ reveals.forEach(r=>r.classList.add('show')); }
 
-      // Bubbles generator - reduced frequency on mobile
+      // ====== BUBBLES ======
       const bubblesWrap = qs('#bubbles');
       function makeBubble(){
-        const b = document.createElement('div');
-        b.className='bubble';
-        const size = 6 + Math.random()*36;
-        b.style.width = size+'px';
-        b.style.height = size+'px';
-        b.style.left = (Math.random()*100)+'%';
-        b.style.top = (10 + Math.random()*80)+'%';
-        b.style.opacity = (0.04 + Math.random()*0.28);
-        bubblesWrap.appendChild(b);
+        const b = document.createElement('div'); b.className='bubble';
+        const size = 6 + Math.random()*36; b.style.width = size+'px'; b.style.height = size+'px';
+        b.style.left = (Math.random()*100)+'%'; b.style.top = (10 + Math.random()*80)+'%';
+        b.style.opacity = (0.04 + Math.random()*0.28); bubblesWrap.appendChild(b);
         const dur = 10 + Math.random()*12;
-        b.animate([
-          {transform:'translateY(0) scale(1)'},
-          {transform:'translateY(-220px) scale(.8)'}
-        ],{duration:dur*1000,iterations:Infinity,easing:'linear'});
+        b.animate([{transform:'translateY(0) scale(1)'},{transform:'translateY(-220px) scale(.8)'}],{duration:dur*1000,iterations:Infinity,easing:'linear'});
         setTimeout(()=>{ if(b.parentNode) b.remove() }, (dur*1000)+2000);
       }
-      if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-        const interval = window.matchMedia('(max-width:820px)').matches ? 900 : 600;
-        setInterval(makeBubble, interval);
-      }
+      if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){ const interval = window.matchMedia('(max-width:820px)').matches ? 900 : 600; setInterval(makeBubble, interval); }
 
-      // Ripple canvas
+      // ====== RIPPLE CANVAS ======
       const canvas = qs('#ripple-canvas');
-      const ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
-      let W=window.innerWidth, H=window.innerHeight; if(canvas){canvas.width=W;canvas.height=H}
+      const ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null; let W=window.innerWidth, H=window.innerHeight; if(canvas){canvas.width=W;canvas.height=H}
       window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight});
-      const ripples=[];
-      function draw(){
-        if(!ctx) return requestAnimationFrame(draw);
-        ctx.clearRect(0,0,W,H);
-        for(let i=ripples.length-1;i>=0;i--){
-          const r = ripples[i];
-          ctx.beginPath();
-          ctx.arc(r.x,r.y,r.rad,0,Math.PI*2);
-          ctx.strokeStyle = `rgba(255,255,255,${r.alpha})`;
-          ctx.lineWidth = 2;
-          ctx.stroke();
-          r.rad+=r.speed; r.alpha-=0.01;
-          if(r.alpha<=0) ripples.splice(i,1);
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-      ['click','mousemove'].forEach(evt=>{
-        window.addEventListener(evt,(e)=>{
-          if(evt==='mousemove' && Math.random()>0.04) return;
-          ripples.push({x:e.clientX,y:e.clientY,rad:8,alpha:0.45,speed:2+Math.random()*3});
-        });
-      });
+      const ripples=[]; function draw(){ if(!ctx) return requestAnimationFrame(draw); ctx.clearRect(0,0,W,H); for(let i=ripples.length-1;i>=0;i--){ const r=ripples[i]; ctx.beginPath(); ctx.arc(r.x,r.y,r.rad,0,Math.PI*2); ctx.strokeStyle = `rgba(255,255,255,${r.alpha})`; ctx.lineWidth=2; ctx.stroke(); r.rad+=r.speed; r.alpha-=0.01; if(r.alpha<=0) ripples.splice(i,1); } requestAnimationFrame(draw); } draw();
+      ['click','mousemove'].forEach(evt=>{ window.addEventListener(evt,(e)=>{ if(evt==='mousemove' && Math.random()>0.04) return; ripples.push({x:e.clientX,y:e.clientY,rad:8,alpha:0.45,speed:2+Math.random()*3}); }); });
 
-      // CTA wiring (focus uses safe focus now)
+      // ====== CTAs ======
       qs('#cta-audit') && qs('#cta-audit').addEventListener('click',()=>{
-        // user-initiated scroll is fine; we use smooth here intentionally
-        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-        // focus safely without forcing scroll (browser supports preventScroll via our wrapper)
-        const nameInput = qs('input[name="name"]');
-        try { nameInput && nameInput.focus({preventScroll:true}); } catch(e){ try { nameInput && nameInput.focus(); } catch(e2){} }
+        const target = qs('#contact'); if(target) scrollToElementSmooth(target);
+        const nameInput = qs('input[name="name"]'); if(nameInput){ try{ nameInput.focus({preventScroll:true}); }catch(e){} }
       });
+      qs('#cta-portfolio') && qs('#cta-portfolio').addEventListener('click',()=>{ const t=qs('#portfolio'); if(t) scrollToElementSmooth(t); });
 
-      qs('#cta-portfolio') && qs('#cta-portfolio').addEventListener('click',()=>{qs('#portfolio').scrollIntoView({behavior:'smooth'})});
-
-      // Reef card micro interactions (touch friendly)
+      // ====== REEF CARD interactions (no auto-jump) ======
       qsa('.reef-card').forEach(card=>{
-        card.addEventListener('mouseenter',()=>{card.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:280,fill:'forwards'})});
-        card.addEventListener('mouseleave',()=>{card.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:280,fill:'forwards'})});
-        // tap -> focus WITHOUT scrolling
-        card.addEventListener('click',()=>{
-          try{ card.focus({preventScroll:true}); }
-          catch(e){ const px=window.scrollX, py=window.scrollY; try{ card.focus(); }catch(e2){} window.scrollTo(px,py); }
-        });
+        card.addEventListener('mouseenter',()=>{ card.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:280,fill:'forwards'}) });
+        card.addEventListener('mouseleave',()=>{ card.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:280,fill:'forwards'}) });
+        card.addEventListener('click',()=>{ try{ card.focus({preventScroll:true}); }catch(e){ const px=window.scrollX, py=window.scrollY; try{ card.focus(); }catch(e){} try{ window.scrollTo(px,py); }catch(e){} } });
       });
 
-      // Contact form faux submit
-      qs('#contactForm') && qs('#contactForm').addEventListener('submit',(e)=>{e.preventDefault();const name = e.target.name.value || 'friend';alert('Message received, '+name+' — we\'ll send a free audit within 48 hours.');e.target.reset();});
-      qs('#demo-btn') && qs('#demo-btn').addEventListener('click',()=>{alert('Request noted. We\'ll ping you with 3 quick wins.')});
+      // ====== FORM ======
+      qs('#contactForm') && qs('#contactForm').addEventListener('submit',(e)=>{ e.preventDefault(); const name = e.target.name.value || 'friend'; alert('Message received, '+name+' — we\'ll send a free audit within 48 hours.'); e.target.reset(); });
+      qs('#demo-btn') && qs('#demo-btn').addEventListener('click',()=>{ alert('Request noted. We\'ll ping you with 3 quick wins.') });
 
-      // Ambient sound toggle
-      const amb = qs('#ambience'); const soundBtn = qs('#soundToggle');
-      let playing=false;
-      soundBtn && soundBtn.addEventListener('click',()=>{
-        if(!amb || !amb.src){alert('No ambience file set. Add assets/audio/ocean.mp3 and set <audio id="ambience" src="assets/audio/ocean.mp3">');return}
-        if(playing){amb.pause(); soundBtn.textContent='🔇'; soundBtn.setAttribute('aria-pressed','false'); playing=false}
-        else{amb.play(); soundBtn.textContent='🔊'; soundBtn.setAttribute('aria-pressed','true'); playing=true}
-      });
+      // ====== SOUND ======
+      const amb = qs('#ambience'); const soundBtn = qs('#soundToggle'); let playing=false;
+      soundBtn && soundBtn.addEventListener('click',()=>{ if(!amb || !amb.src){ alert('No ambience file set. Add assets/audio/ocean.mp3 and set <audio id="ambience" src="assets/audio/ocean.mp3">'); return } if(playing){ amb.pause(); soundBtn.textContent='🔇'; soundBtn.setAttribute('aria-pressed','false'); playing=false } else { amb.play(); soundBtn.textContent='🔊'; soundBtn.setAttribute('aria-pressed','true'); playing=true } });
 
-      // mouse tracking for subtle device parallax
-      let mouseX=0, mouseY=0; document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
-      (function loop(){const s = qs('#screen');if(s){const nx = (mouseX - window.innerWidth/2) / window.innerWidth * 8;const ny = (mouseY - window.innerHeight/2) / window.innerHeight * 6;s.style.transform = `translate(${nx}px, ${ny}px)`;}requestAnimationFrame(loop);})();
+      // ====== PARALLAX / MOUSE ======
+      let mouseX=0, mouseY=0; document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY}); (function loop(){ const s = qs('#screen'); if(s){ const nx = (mouseX - window.innerWidth/2) / window.innerWidth * 8; const ny = (mouseY - window.innerHeight/2) / window.innerHeight * 6; s.style.transform = `translate(${nx}px, ${ny}px)`; } requestAnimationFrame(loop); })();
 
-      // lighthouse beacon scroll to top
-      qs('.beacon button') && qs('.beacon button').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
+      // ====== BEACON ======
+      qs('.beacon button') && qs('.beacon button').addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
 
       // Respect reduced motion
-      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){document.documentElement.style.setProperty('--ease','linear');}
+      if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) document.documentElement.style.setProperty('--ease','linear');
 
-      // SEO-friendly dynamic title
-      window.addEventListener('scroll',()=>{const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);if(p<0.15) document.title = 'Tira Creatives — We make waves'; else if(p<0.5) document.title = 'Tira Creatives — Our Work (Reef)'; else document.title = 'Tira Creatives — Dive Deeper';});
+      // dynamic title
+      window.addEventListener('scroll',()=>{ const p = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight); if(p<0.15) document.title='Tira Creatives — We make waves'; else if(p<0.5) document.title='Tira Creatives — Our Work (Reef)'; else document.title='Tira Creatives — Dive Deeper'; });
 
     })();
   </script>
