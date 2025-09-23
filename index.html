@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tira Creatives - Dive Deep into Digital Success</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+        
+        /* Ocean Animation Background */
+        .ocean-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ocean-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><path d="M0,100 Q250,50 500,100 T1000,100 L1000,200 L0,200 Z" fill="rgba(255,255,255,0.1)"/></svg>') repeat-x;
+            animation: wave 15s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-25px) translateY(-10px); }
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-hidden {
+            display: none;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .results {
+            background: #e8f6f3;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .results h4 {
+            color: #27ae60;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .testimonial {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial cite {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .blog-post {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Ocean Elements -->
+    <div class="floating-element">🐋</div>
+    <div class="floating-element">🌊</div>
+    <div class="floating-element">🐙</div>
+    
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Tira Creatives</div>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('services')">Services</a></li>
+                <li><a onclick="showSection('portfolio')">Portfolio</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('blog')">Blog</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero ocean-bg">
+        <div class="hero-content">
+            <h1>Dive Deep into Digital Success</h1>
+            <p>We're Tira Creatives - where ocean-deep strategy meets wave-making creativity to elevate your brand's digital presence</p>
+            <a href="#" class="cta-button" onclick="showSection('contact')">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-hidden">
+        <h2 class="section-title">Our Services</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Navigate the digital ocean with our comprehensive suite of services</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">📱</span>
+                <h3>Social Media Management</h3>
+                <p>Complete social media strategy, content creation, and community management across all major platforms. We handle everything from daily posting to engagement strategies that build lasting relationships with your audience.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Daily content creation & posting</li>
+                    <li>Community engagement & management</li>
+                    <li>Platform-specific optimization</li>
+                    <li>Monthly analytics & reporting</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Content Creation</h3>
+                <p>From eye-catching visuals to compelling copy, we create content that stops the scroll and drives action. Our creative team specializes in brand-aligned content that resonates with your target audience.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Custom graphic design & illustrations</li>
+                    <li>Video production & editing</li>
+                    <li>Copywriting & storytelling</li>
+                    <li>Brand photography direction</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🎯</span>
+                <h3>Paid Advertising</h3>
+                <p>Strategic ad campaigns that maximize ROI across Facebook, Instagram, Google, and LinkedIn. We combine creative excellence with data-driven optimization to deliver measurable results.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Campaign strategy & setup</li>
+                    <li>Creative ad design & copy</li>
+                    <li>Audience targeting & optimization</li>
+                    <li>Performance tracking & scaling</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">⭐</span>
+                <h3>Influencer Marketing</h3>
+                <p>Connect with the right influencers to amplify your brand message. We handle everything from influencer identification and outreach to campaign management and performance tracking.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Influencer identification & vetting</li>
+                    <li>Campaign strategy & negotiation</li>
+                    <li>Content collaboration oversight</li>
+                    <li>ROI measurement & reporting</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">🧭</span>
+                <h3>Strategy Development</h3>
+                <p>Comprehensive digital marketing strategies tailored to your business goals. We analyze your market, competitors, and audience to create data-driven roadmaps for success.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Market & competitor analysis</li>
+                    <li>Audience research & personas</li>
+                    <li>Content calendar development</li>
+                    <li>KPI setting & tracking</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3>Analytics & Reporting</h3>
+                <p>In-depth analytics and actionable insights to continuously optimize your digital presence. We provide clear, comprehensive reports that show exactly how your investment is performing.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Custom dashboard creation</li>
+                    <li>Monthly performance reports</li>
+                    <li>Competitive benchmarking</li>
+                    <li>Growth recommendations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-hidden">
+        <h2 class="section-title">Portfolio & Case Studies</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Dive into our success stories and see how we've helped brands make waves</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">Ocean View Resort</div>
+                <div class="portfolio-content">
+                    <h3>Ocean View Resort - Social Media Transformation</h3>
+                    <p><strong>Challenge:</strong> Luxury resort struggling with low online engagement and bookings through social media.</p>
+                    <p><strong>Solution:</strong> Complete social media overhaul with stunning visual content, influencer partnerships, and targeted ad campaigns.</p>
+                    <div class="results">
+                        <h4>Results Achieved:</h4>
+                        <ul>
+                            <li>340% increase in Instagram followers</li>
+                            <li>180% boost in direct bookings from social</li>
+                            <li>95% improvement in engagement rate</li>
+                            <li>$2.3M in attributed revenue over 12 months</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <div class="portfolio-image">AquaTech Startup</div>
+                <div class="portfolio-content">
+                    <h3>AquaTech Startup - Launch Campaign</h3>
+                    <p><strong>Challenge:</strong> New sustainable water technology company needed to establish brand awareness and generate leads.</p>
+                    <p><strong>Solution:</strong> Multi-platform content strategy focusing on education, sustainability messaging, and thought leadership.</p>
+                    <div class="results">
+                        <h4>Results Achieved:</h4>
+                        <ul>
+                            <li>Built 50K+ followers across platforms in 6 months</li>
+                            <li>Generated 1,200+ qualified leads</li>
+                            <li>Secured $5M in Series A funding</li>
+                            <li>Established CEO as industry thought leader</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <div class="portfolio-image">Blue Wave E-commerce</div>
+                <div class="portfolio-content">
+                    <h3>Blue Wave E-commerce - Sales Optimization</h3>
+                    <p><strong>Challenge:</strong> Online retailer experiencing declining sales and poor social media ROI.</p>
+                    <p><strong>Solution:</strong> Data-driven ad optimization, user-generated content campaigns, and influencer collaborations.</p>
+                    <div class="results">
+                        <h4>Results Achieved:</h4>
+                        <ul>
+                            <li>280% increase in social commerce sales</li>
+                            <li>65% reduction in customer acquisition cost</li>
+                            <li>450% growth in user-generated content</li>
+                            <li>4.8x return on ad spend (ROAS)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-hidden">
+        <h2 class="section-title">About Tira Creatives</h2>
+        
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            <p style="font-size: 1.3rem; margin-bottom: 2rem;">Born from the depths of digital innovation, Tira Creatives is where creativity meets strategy in the vast ocean of social media marketing.</p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">We believe every brand has a unique story waiting to surface. Like skilled navigators, we guide businesses through the ever-changing currents of digital marketing, helping them discover new territories of growth and connection. Our approach is both art and science - combining creative excellence with data-driven insights to create campaigns that don't just float, but make waves.</p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: 20px; color: white; text-align: center; margin: 3rem 0;">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Our Mission</h3>
+            <p style="font-size: 1.2rem;">To help businesses navigate the digital ocean with confidence, creating authentic connections that drive meaningful growth and lasting success.</p>
+        </div>
+        
+        <h3 style="font-size: 2rem; text-align: center; margin: 3rem 0 2rem; color: #2c3e50;">Meet Our Crew</h3>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo">SM</div>
+                <h3>Sarah Martinez</h3>
+                <h4 style="color: #3498db; margin-bottom: 1rem;">Founder & Creative Director</h4>
+                <p>With 8+ years in digital marketing, Sarah leads our creative vision and ensures every campaign reflects our ocean-deep commitment to excellence. Former senior strategist at top agencies.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo">JC</div>
+                <h3>Jake Chen</h3>
+                <h4 style="color: #3498db; margin-bottom: 1rem;">Strategy & Analytics Lead</h4>
+                <p>Data scientist turned marketing strategist, Jake brings analytical precision to our creative processes. Specializes in performance optimization and predictive modeling.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo">AR</div>
+                <h3>Aria Rodriguez</h3>
+                <h4 style="color: #3498db; margin-bottom: 1rem;">Content & Community Manager</h4>
+                <p>Award-winning content creator with expertise in visual storytelling and community building. Aria ensures every piece of content creates meaningful connections.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo">MK</div>
+                <h3>Marcus Kim</h3>
+                <h4 style="color: #3498db; margin-bottom: 1rem;">Paid Media Specialist</h4>
+                <p>Performance marketing expert with a track record of scaling campaigns from startup to enterprise level. Certified across all major advertising platforms.</p>
+            </div>
+        </div>
+        
+        <div class="testimonials">
+            <div class="testimonial">
+                <blockquote>"Working with Tira Creatives has been transformative for our business. They don't just manage our social media - they've become true partners in our growth story."</blockquote>
+                <cite>- Jennifer Walsh, CEO of Coastal Dynamics</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section-hidden">
+        <h2 class="section-title">Insights & Resources</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Stay current with the latest waves in digital marketing</p>
+        
+        <div class="blog-grid">
+            <article class="blog-post">
+                <div class="blog-image">Platform Updates</div>
+                <div class="blog-content">
+                    <h3>Instagram's Latest Algorithm Changes: What Brands Need to Know</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">December 15, 2024</p>
+                    <p>Instagram's recent algorithm updates are reshaping how content is discovered. We break down the key changes and provide actionable strategies for maintaining visibility and engagement in the new landscape.</p>
+                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="blog-image">Strategy Guide</div>
+                <div class="blog-content">
+                    <h3>The Complete Guide to Social Commerce in 2024</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">December 10, 2024</p>
+                    <p>Social commerce is revolutionizing how brands sell online. Discover the platforms, strategies, and best practices that are driving billions in social commerce revenue.</p>
+                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="blog-image">Industry Trends</div>
+                <div class="blog-content">
+                    <h3>5 Content Marketing Trends That Will Dominate 2025</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">December 5, 2024</p>
+                    <p>From AI-powered personalization to interactive content formats, we explore the trends that forward-thinking brands are already implementing to stay ahead of the curve.</p>
+                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="blog-image">Case Study</div>
+                <div class="blog-content">
+                    <h3>How We Helped a B2B SaaS Company Triple Their LinkedIn Leads</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">November 28, 2024</p>
+                    <p>A deep dive into our LinkedIn strategy that transformed a struggling B2B company into a lead generation powerhouse. Includes specific tactics and measurable results.</p>
+                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="blog-image">Tips & Tools</div>
+                <div class="blog-content">
+                    <h3>10 Free Tools Every Social Media Manager Should Know</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">November 22, 2024</p>
+                    <p>Discover the hidden gems and free resources that can streamline your social media workflow, improve your content quality, and boost your team's productivity.</p>
+                    <a href="#" style="color: #3498db; font-weight: 600;">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="blog-image">Thought Leadership</div>
+                <div class="blog-content">
+                    <h3>The Future of Influencer Marketing: Micro vs. Macro Influencers</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">November 18, 2024</p>
+                    <p>An in-depth analysis of influencer marketing trends, ROI comparisons, and strategic recommendations for brands looking to maximize their influencer partnerships.</p>
+                    <a href="#"
