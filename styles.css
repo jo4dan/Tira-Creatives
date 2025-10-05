@@ -29,6 +29,28 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helve
 .hamburger{display:none;gap:4px;background:transparent;border:0;cursor:pointer}
 .hamburger span{display:block;width:26px;height:3px;background:linear-gradient(90deg,var(--primary-blue),var(--teal));transition:.3s}
 
+/* Hero height: mobile-safe */
+.hero { min-height: 100dvh; }
+@supports not (height: 100dvh) { .hero { min-height: calc(var(--vh, 1vh) * 100); } }
+
+/* Mobile menu fills screen and scrolls */
+@media (max-width: 768px) {
+  .nav-links { height: 100dvh; overflow-y: auto; }
+  @supports not (height: 100dvh) { .nav-links { height: calc(var(--vh, 1vh) * 100); } }
+}
+
+/* Fluid media */
+img, svg { max-width: 100%; height: auto; display: block; }
+
+/* Fluid type with clamp */
+.hero-title { font-size: clamp(1.9rem, 6vw, 3.6rem); }  /* fluid H1 */
+body { font-size: clamp(1rem, 2.2vw, 1.125rem); }       /* fluid body */
+
+/* Soften wave animations on phones and honor reduced motion */
+@media (max-width: 768px){ .wave{animation-duration:20s} .wave2{animation-duration:18s} }
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important} }
+
+
 /* Hero: sky, sun, waves, sand, island */
 .hero{position:relative;min-height:100vh;margin-top:64px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:
   radial-gradient(220px 220px at 82% 14%, var(--sun) 0 60%, rgba(255,224,122,0) 61%),
