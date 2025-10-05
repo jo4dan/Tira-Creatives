@@ -1,0 +1,252 @@
+<!-- tira.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tira Creatives — Making Waves in Digital Marketing</title>
+  <meta name="description" content="Tira Creatives: Social media and content marketing that reaches audiences like waves reaching the shore." />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar" role="banner">
+    <nav class="container" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Tira Creatives home">
+        <img src="tira.jpg" alt="Tira Creatives logo" class="brand-mark" />
+        <span class="brand-text">TIRA <small>creatives</small></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="menubar">
+        <li role="none"><a role="menuitem" href="#services">Services</a></li>
+        <li role="none"><a role="menuitem" href="#about">About</a></li>
+        <li role="none"><a role="menuitem" href="#portfolio">Work</a></li>
+        <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero with waves + CSS beach/island + canvas spray -->
+    <section class="hero" id="home" aria-label="Intro">
+      <canvas class="spray-canvas" aria-hidden="true"></canvas>
+
+      <div class="wave-container" aria-hidden="true">
+        <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#0066cc" fill-opacity="0.30" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,133.3C672,117,768,107,864,122.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L0,320Z"></path>
+        </svg>
+        <svg class="wave wave2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#0080e6" fill-opacity="0.50" d="M0,160L48,144C96,128,192,96,288,96C384,96,480,128,576,154.7C672,181,768,203,864,197.3C960,192,1056,160,1152,133.3C1248,107,1344,85,1392,74.7L1440,64L1440,320L0,320Z"></path>
+        </svg>
+      </div>
+
+      <div class="container hero-content">
+        <h1 class="hero-title">Be the Wave That Reaches the Shore</h1>
+        <p class="hero-subtitle">Social media and content marketing that carries brands to new audiences with rhythm, reach, and impact.</p>
+        <a href="#contact" class="cta-button">Ride the Wave</a>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <h2 class="section-title" id="services-title">Our Services</h2>
+        <div class="services-grid">
+          <article class="service-card" aria-label="Social Media Management">
+            <div class="icon">📱</div>
+            <h3>Social Media Management</h3>
+            <p>Plan, publish, and engage across platforms with stories that swell and crest at the right moments.</p>
+          </article>
+          <article class="service-card" aria-label="Content Creation">
+            <div class="icon">✨</div>
+            <h3>Content Creation</h3>
+            <p>Design, copy, and motion that flow together like currents for consistent, memorable presence.</p>
+          </article>
+          <article class="service-card" aria-label="Digital Strategy">
+            <div class="icon">📊</div>
+            <h3>Digital Strategy</h3>
+            <p>Data‑driven currents mapped to goals so every tide moves closer to measurable outcomes.</p>
+          </article>
+          <article class="service-card" aria-label="Paid Advertising">
+            <div class="icon">🎯</div>
+            <h3>Paid Advertising</h3>
+            <p>Targeted waves that reach the right shores with optimized spend and creative fit.</p>
+          </article>
+          <article class="service-card" aria-label="Brand Identity">
+            <div class="icon">🎨</div>
+            <h3>Brand Identity</h3>
+            <p>Fluid systems—logo, color, type—that feel alive across social surfaces and touchpoints.</p>
+          </article>
+          <article class="service-card" aria-label="Analytics & Insights">
+            <div class="icon">📈</div>
+            <h3>Analytics & Insights</h3>
+            <p>Dashboards and reporting that translate signal to strategy with clarity and cadence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2 class="section-title" id="about-title">About Tira</h2>
+            <p>Like waves meeting the shore, our campaigns are rhythmic, reliable, and designed to reach where attention gathers.</p>
+            <p>Strategists, designers, and editors collaborate to create movements, not just posts, with momentum across channels.</p>
+
+            <div class="stats" aria-label="Key metrics">
+              <div class="stat">
+                <h3><span class="counter" data-target="200">0</span>+</h3>
+                <p>Campaigns Launched</p>
+              </div>
+              <div class="stat">
+                <h3><span class="counter" data-target="50">0</span>+</h3>
+                <p>Happy Clients</p>
+              </div>
+              <div class="stat">
+                <h3><span class="counter" data-target="10">0</span>M+</h3>
+                <p>Reach Generated</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual">
+            <div class="circle-animation" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="portfolio" id="portfolio" aria-labelledby="work-title">
+      <div class="container">
+        <h2 class="section-title" id="work-title">Our Work</h2>
+        <div class="portfolio-grid">
+          <figure class="portfolio-item">
+            <figcaption class="portfolio-overlay">
+              <h3>Brand Campaign</h3>
+              <p>Social Media Strategy</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item">
+            <figcaption class="portfolio-overlay">
+              <h3>Content Series</h3>
+              <p>Video Production</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item">
+            <figcaption class="portfolio-overlay">
+              <h3>Product Launch</h3>
+              <p>Integrated Campaign</p>
+            </figcaption>
+          </figure>
+          <figure class="portfolio-item">
+            <figcaption class="portfolio-overlay">
+              <h3>Influencer Campaign</h3>
+              <p>Multi‑Platform Strategy</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wave-divider" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,0L0,0Z"></path>
+        </svg>
+      </div>
+
+      <div class="container">
+        <h2 class="section-title" id="contact-title">Let’s Make Waves</h2>
+        <p class="contact-subtitle">Tell us about the brand, the currents, and the coast you want to reach.</p>
+
+        <form class="contact-form" id="contactForm" novalidate aria-describedby="form-help">
+          <p id="form-help" class="visually-hidden">All fields marked required must be completed before sending.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name<span aria-hidden="true"> *</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email<span aria-hidden="true"> *</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service<span aria-hidden="true"> *</span></label>
+            <select id="service" name="service" required>
+              <option value="">Select a Service</option>
+              <option value="social-media">Social Media Management</option>
+              <option value="content">Content Creation</option>
+              <option value="strategy">Digital Strategy</option>
+              <option value="advertising">Paid Advertising</option>
+              <option value="branding">Brand Identity</option>
+              <option value="analytics">Analytics & Insights</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Project Details<span aria-hidden="true"> *</span></label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Send Message</button>
+          <div class="success-message" id="successMessage" role="status" aria-live="polite">
+            <p>✓ Thank you! We’ll be in touch soon.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-content">
+      <section class="footer-section">
+        <h3>TIRA</h3>
+        <p>Making waves in digital marketing.</p>
+      </section>
+      <nav class="footer-section" aria-label="Footer">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <section class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links" aria-label="Social">
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Facebook">👍</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+          <a href="#" aria-label="X">🐦</a>
+        </div>
+      </section>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Tira Creatives. All rights reserved.</p>
+    </div>
+    <button class="to-top" aria-label="Scroll to top">🏝️</button>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
