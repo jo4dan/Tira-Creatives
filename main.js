@@ -138,6 +138,26 @@ if (isMobile() && !prefersReduced.matches) {
   const style = document.createElement('style'); style.textContent='@keyframes ripple{to{transform:scale(4);opacity:0}}'; document.head.appendChild(style);
 }
 
+// Mobile viewport fallback (sets --vh for browsers without dvh)
+const setVHFallback = () => {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+};
+setVHFallback();
+window.addEventListener('resize', () => requestAnimationFrame(setVHFallback), { passive: true });
+
+// Feature gating for phones / reduced motion
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+const smallScreen = () => window.matchMedia('(max-width: 768px)').matches;
+const effectsOn = () => !prefersReduced.matches && !smallScreen();
+
+// Example: disable parallax/canvas when not enabled
+if (!effectsOn()) {
+  document.querySelectorAll('.wave').forEach(w => w.style.transform = '');
+  const spray = document.querySelector('.spray-canvas');
+  if (spray) { const ctx = spray.getContext?.('2d'); if (ctx) ctx.clearRect(0,0,spray.width,spray.height); }
+}
+
+
 /* Scroll-to-top button */
 (function(){
   const btn = document.querySelector('.to-top');
