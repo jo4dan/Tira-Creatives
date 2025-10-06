@@ -260,6 +260,13 @@ textarea{ resize:vertical }
   }
   .nav-links.active{ left:0 }
 
+  
+  .brand { z-index: 1002; } /* keep it above nav links */
+  .nav-links { width: 70%; left: -100%; background: #fff; padding-top: var(--nav-h); }
+  .nav-links.active { left: 0; }
+}
+
+
   .nav-links li{
     display:block;
     margin:15px 0;
