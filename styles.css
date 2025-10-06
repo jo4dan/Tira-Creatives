@@ -37,7 +37,7 @@ body{
 .hamburger{ display:none; gap:4px; background:transparent; border:0; cursor:pointer }
 .hamburger span{ display:block; width:26px; height:3px; background:linear-gradient(90deg,var(--primary-blue),var(--teal)); transition:.3s }
 
-/* Hero height: dvh with fallback, offset for fixed nav */
+/* Hero */
 .hero { 
   position:relative;
   min-height: 100dvh;
@@ -54,11 +54,11 @@ body{
 /* Fluid media */
 img, svg { max-width: 100%; height: auto; display: block }
 
-/* Fluid type with clamp */
+/* Fluid type */
 .hero-title { font-size: clamp(1.9rem, 6vw, 3.6rem) }
 .hero-subtitle { font-size: clamp(1rem, 2.2vw, 1.25rem) }
 
-/* Waves and hero visuals */
+/* Hero visuals */
 .hero::after{
   content:''; position:absolute; left:0; right:0; bottom:0; height:28vh; background:
   radial-gradient(120% 80% at 50% 130%, var(--sand) 0 55%, rgba(244,215,161,0) 56%),
@@ -66,7 +66,8 @@ img, svg { max-width: 100%; height: auto; display: block }
   z-index:0
 }
 .hero::before{
-  content:''; position:absolute; left:10vw; bottom:18vh; width:220px; height:160px; z-index:1; pointer-events:none; background:
+  content:''; position:absolute; left:10vw; bottom:18vh; width:220px; height:160px; z-index:1; pointer-events:none;
+  background:
   radial-gradient(70px 20px at 58% 25%, #1ea37a 98%, transparent 100%),
   radial-gradient(70px 20px at 42% 28%, #1ea37a 98%, transparent 100%),
   linear-gradient(#6b4423,#6b4423),
@@ -127,7 +128,7 @@ img, svg { max-width: 100%; height: auto; display: block }
   content:''; position:absolute; top:-45%; right:-10%; width:580px; height:580px; border-radius:50%;
   background:radial-gradient(circle,rgba(0,179,179,.06),transparent 70%); animation:pulseSlow 10s ease-in-out infinite
 }
-.about-content{ display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center }
+.about-content{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center }
 .about-text p{ color:var(--muted); margin:10px 0 }
 .stats{ display:flex; flex-wrap:wrap; gap:22px; margin-top:18px }
 .stat{ text-align:center; flex:1 0 140px }
@@ -214,7 +215,15 @@ textarea{ resize:vertical }
 }
 .to-top.show{ opacity:1; visibility:visible }
 
-/* Mobile navigation (single, conflict-free definition) */
+/* ===== Responsive Fixes ===== */
+
+/* Tablet */
+@media (max-width: 1024px){
+  .about-content{ grid-template-columns:1fr; }
+  .form-row{ grid-template-columns:1fr; }
+}
+
+/* Mobile nav + stacking */
 @media (max-width: 768px){
   .hamburger{ display:flex }
   .nav-links{
@@ -224,9 +233,18 @@ textarea{ resize:vertical }
   }
   .nav-links.active{ left:0 }
   .nav-links a{ padding:12px 4px; font-size:1.05rem }
-  .form-row{ grid-template-columns:1fr }
   .hero::after{ height:24vh }
   .wave{ animation-duration:20s } .wave2{ animation-duration:18s }
+  .services{ padding:60px 0 }
+  .about{ padding:60px 0 }
+  .portfolio{ padding:60px 0 }
+  .contact{ padding:60px 0 }
+  .footer{ padding:30px 0 60px }
+  .hero-content{ padding:1rem }
+  .hero-title{ font-size:clamp(1.6rem,6vw,2.6rem) }
+  .hero-subtitle{ font-size:1rem }
+  .cta-button{ padding:12px 24px; font-size:0.95rem }
+  .service-card, .portfolio-item{ min-height:200px }
 }
 
 /* Animations */
@@ -239,13 +257,7 @@ textarea{ resize:vertical }
 @keyframes fadeInUp{ from{ opacity:0; transform:translateY(30px) } to{ opacity:1; transform:translateY(0) } }
 @keyframes wave-text{ 0%,100%{ background-position:0% center } 50%{ background-position:100% center } }
 
-/* Responsive tweaks */
-@media (max-width:900px){
-  .about-content{ grid-template-columns:1fr }
-  .hero::before{ left:4vw; width:150px; height:110px; bottom:16vh }
-}
-
-/* Reduced motion (single definition) */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition:none!important }
 }
