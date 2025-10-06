@@ -224,28 +224,7 @@ textarea{ resize:vertical }
 }
 
 /* Mobile nav + stacking */
-@media (max-width: 768px){
-  .hamburger{ display:flex }
-  .nav-links{
-    position:fixed; top:var(--nav-h); left:-100%; right:0; bottom:0;
-    background:#fff; flex-direction:column; gap:16px; padding:18px 18px calc(18px + env(safe-area-inset-bottom));
-    transition:left .3s; box-shadow:0 10px 27px rgba(0,0,0,.1); overflow-y:auto; z-index:1001
-  }
-  .nav-links.active{ left:0 }
-  .nav-links a{ padding:12px 4px; font-size:1.05rem }
-  .hero::after{ height:24vh }
-  .wave{ animation-duration:20s } .wave2{ animation-duration:18s }
-  .services{ padding:60px 0 }
-  .about{ padding:60px 0 }
-  .portfolio{ padding:60px 0 }
-  .contact{ padding:60px 0 }
-  .footer{ padding:30px 0 60px }
-  .hero-content{ padding:1rem }
-  .hero-title{ font-size:clamp(1.6rem,6vw,2.6rem) }
-  .hero-subtitle{ font-size:1rem }
-  .cta-button{ padding:12px 24px; font-size:0.95rem }
-  .service-card, .portfolio-item{ min-height:200px }
-}
+
 
 /* Animations */
 @keyframes wave-gradient{ 0%,100%{ background-position:0% 50% } 50%{ background-position:100% 50% } }
@@ -262,49 +241,36 @@ textarea{ resize:vertical }
   *{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition:none!important }
 }
 
-@media (max-width: 768px) {
-  /* NAV: force links off-screen, only burger visible */
-  .nav-links {
+@media (max-width: 768px){
+  .hamburger{ display:flex }
+
+  .nav-links{
     flex-direction: column;
     position: fixed;
-    top: 0;
-    left: -100%;   /* hide off screen */
+    top: var(--nav-h);  /* aligns below navbar */
+    left: -100%;
     width: 70%;
     height: 100%;
-    background: #111;
+    background: #fff;  /* or #111 if you want dark menu */
     transition: left 0.3s ease;
-    padding-top: 60px;
+    padding: 60px 20px;
+    gap: 16px;
+    overflow-y:auto;
+    z-index:1001;
+  }
+  .nav-links.active{ left:0 }
+
+  .nav-links li{
+    display:block;
+    margin:15px 0;
+    text-align:center;
   }
 
-  .nav-links.active {
-    left: 0; /* slide in when burger toggled */
-  }
+  .about-content{ grid-template-columns:1fr; gap:20px }
+  .about-visual{ width:100%; justify-content:center }
+  .about-visual img{ max-width:100%; height:auto }
 
-  .nav-links li {
-    display: block;
-    margin: 15px 0;
-    text-align: center;
-  }
-
-  /* ABOUT: collapse to one column */
-  .about-content {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .about-visual {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .about-visual img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Safety net: prevent horizontal scrollbars */
-  body {
-    overflow-x: hidden;
-  }
+  body{ overflow-x:hidden }
 }
+
 
