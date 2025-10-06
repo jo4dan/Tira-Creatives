@@ -261,3 +261,50 @@ textarea{ resize:vertical }
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition:none!important }
 }
+
+@media (max-width: 768px) {
+  /* NAV: force links off-screen, only burger visible */
+  .nav-links {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;   /* hide off screen */
+    width: 70%;
+    height: 100%;
+    background: #111;
+    transition: left 0.3s ease;
+    padding-top: 60px;
+  }
+
+  .nav-links.active {
+    left: 0; /* slide in when burger toggled */
+  }
+
+  .nav-links li {
+    display: block;
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  /* ABOUT: collapse to one column */
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-visual {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-visual img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Safety net: prevent horizontal scrollbars */
+  body {
+    overflow-x: hidden;
+  }
+}
+
