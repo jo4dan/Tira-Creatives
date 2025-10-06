@@ -21,6 +21,8 @@ body{
 .skip-link:focus{ left:10px; top:10px; width:auto; height:auto; background:#000; color:#fff; padding:8px 12px; z-index:10000 }
 
 /* Navbar */
+.navbar .container { min-width: 0; }
+.nav-links { min-width: 0; }
 .navbar{ position:fixed; inset:0 0 auto 0; background:rgba(255,255,255,.98); box-shadow:0 2px 10px rgba(0,0,0,.1); z-index:1000 }
 .navbar::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(90deg,var(--primary-blue),var(--teal),var(--secondary-blue),var(--primary-blue)); background-size:200% 100%; animation:wave-gradient 8s ease infinite }
 .navbar .container{ display:flex; align-items:center; justify-content:space-between; padding:12px 20px }
